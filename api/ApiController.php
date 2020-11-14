@@ -25,14 +25,15 @@ class ApiController {
         echo "! !  ! DEVOLVIENDO EN FORMATO JSON ! ! ! " ; 
         echo "<br>";
         echo "<br>";
-        $this->view->response($tareas);
+        $this->view->response($tareas);  // devuelve en formato de json
       
-        var_dump($tareas);   // hay que devolverlo en formato de JSON */
+        
     }
     
-    public function MostrarPorId($id){
-        $this->model->getProp($id);
-        $this->view->response($id);
+    public function MostrarPorId($params = null){    // intentando traer de a una propiedad en formato JSON,
+        $id_comentario = $params[':ID'];
+        $dato = $this->model->getProp($id_comentario);       
+        $this->view->response($dato);
     }
 
 

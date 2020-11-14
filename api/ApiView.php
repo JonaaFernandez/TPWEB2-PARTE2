@@ -4,7 +4,8 @@
 class ApiView {
 
 public function response($data){  
-echo json_encode($data); // manden lo que manden sabe devolver en formato de JSON
+    echo "<br>";
+    echo json_encode($data); // manden lo que manden sabe devolver en formato de JSON
 }
 
 
