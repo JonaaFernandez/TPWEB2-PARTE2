@@ -25,7 +25,6 @@ class PropertiesTypesModel{
 
       function Delete($type_id){
         $id=$type_id;
-        echo $id . "pppppppppppppppppppppppppppppppppppppppppppp";
         $sentencia = $this->db->prepare("DELETE FROM tipos_propiedades WHERE id=?");
         $sentencia->execute(array($type_id));
     }
