@@ -32,9 +32,11 @@ class ApiController {
     
     public function MostrarPorId($params = null){    // intentando traer de a una propiedad en formato JSON,
         $id_comentario = $params[':ID'];
-        $dato = $this->model->getProp($id_comentario);       
-        $this->view->response($dato);
-    }
+        $dato = $this->model->getProp($id_comentario);
+        if (!empty($dato)){
+            $this->view->response($dato);
+        }
+    }       
 
 
 

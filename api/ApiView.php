@@ -4,7 +4,7 @@
 class ApiView {
 
 public function response($data){  
-    echo "<br>";
+    /* echo "<br>"; */
     echo json_encode($data); // manden lo que manden sabe devolver en formato de JSON
 }
 
@@ -14,6 +14,8 @@ public function response($data){
 
 
     
+
+
 }
 
 // EN API REST LAS CLASES DE PHP NO SE CIERRAN NIGUNA!!! 
