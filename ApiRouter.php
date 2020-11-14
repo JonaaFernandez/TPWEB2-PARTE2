@@ -15,10 +15,11 @@ $router = new  Router();
 
 $router->addRoute("tareas" , "GET" , "ApiController" , "MostrarTodasLasProp"); // ANDANDO
 
-
+$router->addRoute("traerporid/:ID" , "GET" , "ApiController" , "MostrarPorId"); // ANDANDO
 
 
 
 //run
 $router->route($_GET['recurso'], $_SERVER['REQUEST_METHOD']); 
 
+// EN API REST LAS CLASES DE PHP NO SE CIERRAN NIGUNA!!! 
