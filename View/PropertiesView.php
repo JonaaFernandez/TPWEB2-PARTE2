@@ -103,19 +103,21 @@ function showAll($prop,$typeProp){   //VENTAS
     
     }
 
-
-
-
-
-
-      
     function showOne($prop,$typeProp){
-      
         $smarty = new Smarty();  
         $smarty->assign('title', 'Datos de la propiedad'); 
         $smarty->assign('propiedad', $prop); 
         $smarty->assign('tipo', $typeProp); 
         $smarty->display('templates/showOne.tpl'); 
+    }
+
+    function ShowComentarios(){
+        $smarty = new Smarty();  
+        $smarty->assign('title', 'Comentarios'); 
+        $smarty->display('templates/comentarios.tpl'); 
+
+
+
     }
 }
 

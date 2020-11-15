@@ -139,7 +139,9 @@ class PropertiesController{
         $this->view->ShowListLocation();
     }
 
-
+    function GetComentarios(){
+        $this->view->ShowComentarios();
+    }
 }
 
 ?>

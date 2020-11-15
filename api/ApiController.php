@@ -18,7 +18,7 @@ class ApiController {
     }
 
 
-    public function MostrarTodasLasProp($params = null){
+    public function MostrarTodosLosComentarios($params = null){
         $tareas = $this->model->GetAllProp();
         echo "<br>";
         echo "<br>";

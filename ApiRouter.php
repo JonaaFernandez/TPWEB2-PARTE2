@@ -13,7 +13,7 @@ $router = new  Router();
 // "ruta", "RECURSO", "METODO O ACCION", "CONTROLADOR" , "METODO / FUNCION";
 // EJEMPLO DE RUTA -----> $router->addRoute("tasks / GET / ApiController / getTasks");
 
-$router->addRoute("tareas" , "GET" , "ApiController" , "MostrarTodasLasProp"); // ANDANDO
+$router->addRoute("comentarios" , "GET" , "ApiController" , "MostrarTodosLosComentarios"); // ANDANDO
 
 $router->addRoute("traerporid/:ID" , "GET" , "ApiController" , "MostrarPorId"); // ANDANDO
 
