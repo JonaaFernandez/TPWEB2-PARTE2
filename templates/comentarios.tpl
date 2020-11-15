@@ -17,7 +17,7 @@
 
 
 
-<script src="js/comentarios.js"></script>
+<script src="../js/comentarios.js"></script>
 
 
 {include file="footer.tpl"}

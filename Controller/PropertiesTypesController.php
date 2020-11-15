@@ -24,7 +24,7 @@ class PropertiesTypesController{
         header("Location: " . LOGIN);
         die();
         }else{
-            if ( isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 20)) { 
+            if ( isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 190)) { 
                
                 $this->cont->LogOut();
 

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-11-15 15:34:13
+/* Smarty version 3.1.34-dev-7, created on 2020-11-15 23:56:03
   from 'C:\xampp\htdocs\TPweb2parte2\templates\comentarios.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5fb13c65135e99_61883253',
+  'unifunc' => 'content_5fb1b203c18190_86803814',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2dcfa3c5930f83e58ddf43dddf816be36ebd6187' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPweb2parte2\\templates\\comentarios.tpl',
-      1 => 1605450798,
+      1 => 1605480949,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5fb13c65135e99_61883253 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5fb1b203c18190_86803814 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
@@ -45,7 +45,7 @@ $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_sm
 
 
 <?php echo '<script'; ?>
- src="js/comentarios.js"><?php echo '</script'; ?>
+ src="../js/comentarios.js"><?php echo '</script'; ?>
 >
 
 

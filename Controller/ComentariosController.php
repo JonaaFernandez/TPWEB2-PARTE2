@@ -1,27 +1,26 @@
 <?php
 require_once "UserController.php";
 require_once "./View/PropertiesView.php";
+require_once "./Model/ComentariosModel.php";
 require_once "./Model/PropertiesModel.php";
-require_once "./Model/PropertiesTypesModel.php";
 
-// esto es una prueba para el git
-// esto es otra prueba mas!!
-class PropertiesController{
 
-    private $cont;
+class ComentariosController{
+
+    private $propmodel;
     private $view;
     private $model;
-    private $admin = 0;
-   
+    private $coment;
 
     function __construct(){
-        $this->view = new PropertiesView();
-        $this->model = new PropertiesModel();
-        $this->typeModel = new PropertiesTypesModel;
-        $this->cont = new UserController();
+        /* $this->view = new ComentariosView(); */
+        $this->model = new ComentariosModel();
+        $this->user = new UserController();
+        $this->propmodel = new PropertiesModel();
+
     }
 
-     private function checklogueado(){ // CHEQUEA EL ESTADO DE LA SESION Y SU ULTIMA ACIVIDAD
+     private function checklogueado(){ 
 
         if (!isset($_SESSION['USERNAME'])){
             
@@ -38,7 +37,7 @@ class PropertiesController{
     }
 
 
-    function Home(){
+  /*   function Home(){
   
      $this->view->ShowHome();
     }
@@ -52,7 +51,7 @@ class PropertiesController{
      $this->view->ShowContacto();
     }
 
-    function showAllProp(){ /* Muestra "ventas, dependiendo si estoy como admin o usuario */
+    function showAllProp(){ 
      $prop = $this->model->GetAllProp();
      $typeProp = $this->typeModel->GetAll();
     $this->view->ShowAll($prop,$typeProp);
@@ -69,13 +68,6 @@ class PropertiesController{
     }
 
    
-
-
-    function formNew(){
-        $this->checklogueado();
-        $typeProp = $this->typeModel->GetAll();
-        $this->view->showFormNew($typeProp);
-    }
 
  
   
@@ -132,16 +124,15 @@ class PropertiesController{
         $this->view->ShowAll($prop,$typeProp,$this->admin); 
     }
   
-    function delProp($params = null){
+    function delProp($params = null){s
         $this->checklogueado();
         $prop_id = $params[':ID'];
         $this->model->deleteProp($prop_id);
         $this->view->ShowListLocation();
     }
 
-    function GetComentarios($params = null){
+    function GetComentarios(){
         $this->view->ShowComentarios();
-    }
+    } */
 }
 
-?>
