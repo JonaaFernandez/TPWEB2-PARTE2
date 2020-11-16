@@ -12,8 +12,11 @@ class ComentariosModel{
    
 
     function GetComentarioPorPropiedad($prop){
-        $sentencia = $this->db->prepare("SELECT * FROM comentarios WHERE propiedad =? order by id");
-        $sentencia->execute([$prop]);
+       /*  $sentencia = $this->db->prepare("SELECT * FROM comentarios WHERE propiedad=? order by id"); */
+       
+       $sentencia = $this->db->prepare("SELECT * FROM comentarios");
+       $sentencia->execute([$prop]);
+        echo 'llegue al model .............';
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
     
@@ -23,18 +26,17 @@ class ComentariosModel{
         return;
 
     }
-     
-     /*  function getProp($id){
-        $sentencia = $this->db->prepare("SELECT * FROM propiedades WHERE id=?");
+    
+      function GetComm($id){
+        $sentencia = $this->db->prepare("SELECT * FROM comentarios WHERE id=?");
         $sentencia->execute([$id]);
-        return $sentencia->fetchAll(PDO::FETCH_OBJ);
+        return $sentencia->fetch(PDO::FETCH_OBJ);
 
-    } */
+    } 
      
-    function BorrarComentario($comentarioId){
+    function DelComment($comentarioId){
         $sentencia = $this->db->prepare("DELETE FROM comentarios WHERE id=?");
-        $sentencia->execute(array($comentarioId));
-        return;
+        return $sentencia->execute(array($comentarioId));
     }
       
 }

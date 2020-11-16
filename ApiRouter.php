@@ -17,7 +17,7 @@ $router->addRoute("comentarios/:ID" , "GET" , "ApiController" , "MostrarTodosLos
 
 $router->addRoute("traerporid/:ID" , "GET" , "ApiController" , "MostrarPorId"); // ANDANDO
 
-$router->addRoute("borrar/:ID" , "POST" , "ApiController" , "MostrarPorId"); // ANDANDO
+$router->addRoute("borrar/:ID" , "DELETE" , "ApiController" , "DelComment"); // ANDANDO
 
 
 //run

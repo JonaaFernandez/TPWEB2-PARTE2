@@ -20,13 +20,13 @@ class ApiController {
 
 
     public function MostrarTodosLosComentarios($params = null){
-        $tareas = $this->model->GetComentarioPorPropiedad(50);
+        $comentarios = $this->model->GetComentarioPorPropiedad(50);
         echo "<br>";
         echo "<br>";
         echo "! !  ! DEVOLVIENDO EN FORMATO JSON ! ! ! " ; 
         echo "<br>";
         echo "<br>";
-        $this->view->response($tareas);  // devuelve en formato de json
+        $this->view->response($comentarios);  // devuelve en formato de json
         }
    /*  
     public function MostrarPorId($params = null){    // intentando traer de a una propiedad en formato JSON,
@@ -37,9 +37,16 @@ class ApiController {
         }
     }        */
 
-    public function DeleteComentario($params = null){
+    public function DelComment($params = null){
         $comentario_id = $params[':ID'];
-        $this->model->BorrarComentario($comentario_id);
+        $comment= $this->model->GetComm($comentario_id );
+        if ($comment){
+            $this->model->DelComment($comentario_id);
+            $this->view->response('El comentario ha sido borrado',200);
+        }
+        else {
+            $this->view->response('El comentario con id ' . $comentario_id . ' no existe',404);
+        }
     }
     
 
