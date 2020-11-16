@@ -1,6 +1,6 @@
 <?php
 
-class ComentariosModel{
+class CommentModel{
 
     private $db;
 
@@ -11,19 +11,19 @@ class ComentariosModel{
   
    
 
-    function GetComentarioPorPropiedad($prop){
+    function GetCommentByProp($prop){
        /*  $sentencia = $this->db->prepare("SELECT * FROM comentarios WHERE propiedad=? order by id"); */
        
-       $sentencia = $this->db->prepare("SELECT * FROM comentarios");
+       $sentencia = $this->db->prepare("SELECT * FROM comentarios WHERE propiedad=? order by id");
        $sentencia->execute([$prop]);
-        echo 'llegue al model .............';
+       /*  echo 'llegue al model .............'; */
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
     
     function InsertarComentario($comentario,$puntaje,$propiedad){ // tambien va $usuario?
-        $sentencia = $this->db->prepare("INSERT INTO propiedades(comentario, puntaje, propiedad) VALUES(?,?,?)");
+        $sentencia = $this->db->prepare("INSERT INTO comentarios(comentario, puntaje, propiedad) VALUES(?,?,?)");
         $sentencia->execute([$comentario,$puntaje,$propiedad]);
-        return;
+       
 
     }
     

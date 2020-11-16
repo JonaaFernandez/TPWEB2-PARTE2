@@ -1,8 +1,8 @@
 <?php
 require_once 'RouterClass.php';
 require_once 'api/ApiController.php';
-
-echo "ESTA ANDANDO EL API ROUTER!!!!!!!!!!!";   
+/* 
+echo "ESTA ANDANDO EL API ROUTER!!!!!!!!!!!";    */
 
 // INSTANCIAMOS EL ROUTER.
 
@@ -13,11 +13,13 @@ $router = new  Router();
 // "ruta", "RECURSO", "METODO O ACCION", "CONTROLADOR" , "METODO / FUNCION";
 // EJEMPLO DE RUTA -----> $router->addRoute("tasks / GET / ApiController / getTasks");
 
-$router->addRoute("comentarios/:ID" , "GET" , "ApiController" , "MostrarTodosLosComentarios"); // ANDANDO
+$router->addRoute("comentarios/:ID" , "GET" , "ApiController" , "ShowAllComments"); // ANDANDO
 
-$router->addRoute("traerporid/:ID" , "GET" , "ApiController" , "MostrarPorId"); // ANDANDO
+$router->addRoute("traerporid/:ID" , "GET" , "ApiController" , "MostrarPorId"); // SIN USO POR AHORA
 
 $router->addRoute("borrar/:ID" , "DELETE" , "ApiController" , "DelComment"); // ANDANDO
+
+$router->addRoute("agregarcomentario" , "POST" , "ApiController" , "AddComment"); // ANDANDO
 
 
 //run
