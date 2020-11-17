@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-11-2020 a las 00:20:13
+-- Tiempo de generación: 17-11-2020 a las 18:14:49
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.6
 
@@ -39,8 +39,20 @@ CREATE TABLE `comentarios` (
 --
 
 INSERT INTO `comentarios` (`id`, `comentario`, `puntaje`, `propiedad`) VALUES
-(1, 'ME GUSTO MUCHO EL LUGAR', 5, 50),
-(2, 'HORRIBLE!!!! ', 1, 52);
+(2, 'HORRIBLE!!!! ', 1, 52),
+(5, 'exelente lugar, gran servicio.', 4, 50),
+(6, 'linda experiancia, gracias por todo!', 3, 55),
+(7, 'Muy limpio y prolijo, buena atencion, volveremos!', 5, 61),
+(8, 'consular si acepta boa constrictora como mascota.', 3, 52),
+(9, 'Hola, necesitaria coordinar para ir a verlo pérsonalmente,te mande al mail mi telefono, gracias! ', 2, 53),
+(10, 'Que valores de expensas maneja?', 3, 58),
+(11, 'Buen dia, quisiera ir a verlo, como podemos coordinar?', 5, 57),
+(12, 'Me encanto el servicio de limpieza, muy recomendable el lugar!', 5, 52),
+(13, 'Hermoso lugar para estar una semana sin bañarse.', 5, 60),
+(14, 'Lindo lugar, rustico, familiar, algo sucio sin embargo.', 5, 60),
+(15, 'Familia Barroso les agradece la hospitalidad.', 5, 60),
+(16, 'BURUNGANGA', 1, 52),
+(18, 'probando si anda', 5, 54);
 
 -- --------------------------------------------------------
 
@@ -63,7 +75,7 @@ CREATE TABLE `propiedades` (
 --
 
 INSERT INTO `propiedades` (`id`, `nombre`, `tipo`, `direccion`, `valor`, `descripcion`, `fecha`) VALUES
-(50, ' Chacra  pulperia  ', 4, ' rotonda la pulperia', 77000, ' 1200 mts cuadrados', '2020-10-15'),
+(50, '  Chacra  pulperia    ', 4, '  rotonda la pulperia', 755000, ' 1200 mts cuadrados', '2020-10-15'),
 (52, ' duplex dique  ', 14, ' avenida alvear 321', 90000, ' a media cuadra del dique', '2020-10-06'),
 (53, ' Lote superficie 3 hectareas  ', 10, ' ruta 73 km 56', 189000, '  especial para siembra', '2020-10-06'),
 (54, 'Casa grande', 12, 'la madrid 22', 190000, '  4 ambientes , 3 baños, patio grande, cochera, living-comedor', '2020-10-04'),
@@ -114,16 +126,22 @@ CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
   `user` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `password` varchar(300) NOT NULL
+  `password` varchar(300) NOT NULL,
+  `admin` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `user`, `email`, `password`) VALUES
-(1, 'jonafernandez', 'jonaafernandez02@gmail.com', '$2y$10$90DPrTQc4vvkPm3J7Ms//uB3xmYP1dGCKxmL/EKmctIQ/8000SmWy'),
-(2, 'sergio fino', 'sergiofino@river.com', '$2y$10$ZhmoU4YVbfdfcXL0RpKzcOY1TnmL1rT0XTmAEgT6DG54VSgVZ6duC');
+INSERT INTO `usuarios` (`id`, `user`, `email`, `password`, `admin`) VALUES
+(1, 'jonafernandez', 'jonaafernandez02@gmail.com', '$2y$10$90DPrTQc4vvkPm3J7Ms//uB3xmYP1dGCKxmL/EKmctIQ/8000SmWy', 0),
+(2, 'sergio fino', 'sergiofino@river.com', '$2y$10$ZhmoU4YVbfdfcXL0RpKzcOY1TnmL1rT0XTmAEgT6DG54VSgVZ6duC', 0),
+(4, ' pepito', 'pepito@rita.com', '$2y$10$7iQjCW9l04T/UwJOdw47IOkRUcXbvWdzvom/MxFAapQeNqNcGe3s2', 0),
+(5, 'melisa', 'meli@melisa.com', '$2y$10$lvdy0DgrJObCZoPULadpku3p6C0UYo2ZcDLRRVqXgTj1VHUUjvhYC', 0),
+(6, 'melisa', 'asdasdasd@asdasdc.com', '$2y$10$iCvq4uft3RI0S0kujjXUEO7m5iOyMp/CB0HmYRWydpAwNiozI4Cza', 0),
+(7, 'rita', 'ritita@cotorra.com', '$2y$10$qEl4SL.8ppd6/7zSbxnoTekUkzCEH7wq2YFXwVu2/kRQ73LruCiTe', 0),
+(8, 'adriana', 'adrifi@auto.com', '$2y$10$lxyYOpups0TCpKAUnMjIQOr7mEMW0EO4kWAR4wd3gjgQ9uRYGMo96', 0);
 
 --
 -- Índices para tablas volcadas
@@ -163,7 +181,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `propiedades`
@@ -181,7 +199,7 @@ ALTER TABLE `tipos_propiedades`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restricciones para tablas volcadas
