@@ -18,7 +18,7 @@ class PropertiesTypesController{
         $this->cont = new UserController();
     }
 
-     private function checklogueado(){
+   /*   private function checklogueado(){
  
         if (!isset($_SESSION['USERNAME'])){
         header("Location: " . LOGIN);
@@ -31,7 +31,7 @@ class PropertiesTypesController{
             }
             $_SESSION['LAST_ACTIVITY'] = time();
         } 
-    }
+    } */
 
 
 
@@ -51,7 +51,7 @@ class PropertiesTypesController{
 
 
     function Insert(){
-        $this->checklogueado();
+        $this->cont->checklogueado();
         if ((isset($_POST['input_name'])) && (isset($_POST['input_description'])) && ($_POST['input_name']!= "")  && ($_POST['input_description'] !="" )) {
              $this->model->insert($_POST['input_name'],$_POST['input_description']);
              $this->view->ShowListLocation();
@@ -62,7 +62,7 @@ class PropertiesTypesController{
 
 
     function delete($params = null){
-        $this->checklogueado();
+        $this->cont->checklogueado();
         $type_id = $params[':ID'];
         $this->model->delete($type_id);
         $this->view->ShowListLocation();
@@ -73,7 +73,7 @@ class PropertiesTypesController{
 
 
     function showForEdit($params = null){
-        $this->checklogueado();
+        $this->cont->checklogueado();
         $type_id = $params[':ID'];
         $oneType= $this->model->getType($type_id);
         $this->view->ShowOneEdit($oneType);
@@ -81,7 +81,7 @@ class PropertiesTypesController{
 
 
     function Edit(){
-       $this->checklogueado();
+       $this->cont->checklogueado();
        if ((isset($_POST['input_name'])) && (isset($_POST['input_description'])) && ($_POST['input_name']!= "")  && ($_POST['input_description'] !="" )) {
          $this->model->updateType($_POST['input_id'],$_POST['input_name'],$_POST['input_description']);
          $this->view->ShowListLocation();

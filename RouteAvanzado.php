@@ -55,6 +55,8 @@ $r->addRoute("coments", "GET", "PropertiesController", "GetComentarios");
     $r->addRoute("login", "GET", "UserController", "Login");
     $r->addRoute("verificarUsuario", "POST", "UserController", "VerifyUser");
     $r->addRoute("logout", "GET", "UserController", "LogOut");
+    $r->addRoute("registro", "POST", "UserController", "SignUp");
+    $r->addRoute("registrarse", "GET", "UserController", "newUser");
  
 // ---------------------------------- BBDD - tipos_propiedades ---------------------------------
  

@@ -21,7 +21,7 @@ class PropertiesController{
         $this->cont = new UserController();
     }
 
-     private function checklogueado(){ // CHEQUEA EL ESTADO DE LA SESION Y SU ULTIMA ACIVIDAD
+ /*    private function checklogueado(){ // CHEQUEA EL ESTADO DE LA SESION Y SU ULTIMA ACIVIDAD
 
         if (!isset($_SESSION['USERNAME'])){
             
@@ -35,7 +35,7 @@ class PropertiesController{
             }
             $_SESSION['LAST_ACTIVITY'] = time();
         } 
-    }
+    } */
 
 
     function Home(){
@@ -60,7 +60,7 @@ class PropertiesController{
 
     
     function cargaProp($params = null){
-     $this->checklogueado();
+     $this->cont->checklogueado();
      $prop_id = $params[':ID'];
      $prop = $this->model->GetProp($prop_id);
      $typeProp = $this->typeModel->GetAll();
@@ -72,7 +72,7 @@ class PropertiesController{
 
 
     function formNew(){
-        $this->checklogueado();
+        $this->cont->checklogueado();
         $typeProp = $this->typeModel->GetAll();
         $this->view->showFormNew($typeProp);
     }
@@ -80,7 +80,7 @@ class PropertiesController{
  
   
     function InsertProp(){
-        $this->checklogueado();
+        $this->cont->checklogueado();
         if ((isset($_POST['input_name'])) && (isset($_POST['input_value'])) && ($_POST['input_name']!= "")  && ($_POST['input_value'] !="" )) {
              $typeProp = $this->typeModel->GetAll();
              $this->model->insertProp($_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_description'],$_POST['input_value'],$_POST['input_date']);
@@ -92,7 +92,7 @@ class PropertiesController{
 
       
     function formEditProp(){
-        $this->checklogueado();
+        $this->cont->checklogueado();
         $oneProp= $this->model->getProp($_POST['ID']);
         $typeProp = $this->typeModel->GetAllTypesProp();
         $this->view->ShowOneEdit($oneProp,$typeProp);
@@ -101,7 +101,7 @@ class PropertiesController{
 
     
     function EditProp(){
-        $this->checklogueado();
+        $this->cont->checklogueado();
         $id = ($_POST['input_id']);
         if ((isset($_POST['input_name'])) && (isset($_POST['input_value'])) && ($_POST['input_name']!= "")  && ($_POST['input_value'] !="" )) {
             $this->model->updateProp($_POST['input_id'],$_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_value'],$_POST['input_description'],$_POST['input_date']);
@@ -133,7 +133,7 @@ class PropertiesController{
     }
   
     function delProp($params = null){
-        $this->checklogueado();
+        $this->cont->checklogueado();
         $prop_id = $params[':ID'];
         $this->model->deleteProp($prop_id);
         $this->view->ShowListLocation();

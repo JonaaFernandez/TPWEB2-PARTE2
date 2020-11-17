@@ -34,6 +34,13 @@ class UserView{
         header("Location: ".BASE_URL."home");
         
     }
+
+    function NewUser(){
+        $smarty = new Smarty();
+        $smarty->assign('title', 'Sign up');
+        $smarty->display('templates/signup.tpl'); 
+    }
+
 }
 
 
