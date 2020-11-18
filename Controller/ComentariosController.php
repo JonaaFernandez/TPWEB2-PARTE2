@@ -1,7 +1,7 @@
 <?php
 require_once "UserController.php";
 require_once "./View/PropertiesView.php";
-require_once "./Model/ComentariosModel.php";
+require_once "./Model/CommentModel.php";
 require_once "./Model/PropertiesModel.php";
 
 
@@ -14,7 +14,7 @@ class ComentariosController{
 
     function __construct(){
         /* $this->view = new ComentariosView(); */
-        $this->model = new ComentariosModel();
+        $this->model = new CommentModel();
         $this->user = new UserController();
         $this->propmodel = new PropertiesModel();
 

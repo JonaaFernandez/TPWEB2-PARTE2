@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-11-17 00:54:13
-  from 'C:\xampp\htdocs\TPweb2parte2\templates\listapropiedades.tpl' */
+/* Smarty version 3.1.34-dev-7, created on 2020-11-18 21:29:16
+  from 'C:\xampp\htdocs\TPWEB2-PARTE2\templates\listapropiedades.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5fb31125568f78_31710015',
+  'unifunc' => 'content_5fb5841cbd4191_70660016',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'e462eea6242f083125a262ed665580c565bb3dee' => 
+    'acae16a81c2e524be3e86db2c035265f7861eaef' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\TPweb2parte2\\templates\\listapropiedades.tpl',
-      1 => 1602726083,
+      0 => 'C:\\xampp\\htdocs\\TPWEB2-PARTE2\\templates\\listapropiedades.tpl',
+      1 => 1605713908,
       2 => 'file',
     ),
   ),
@@ -22,10 +22,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5fb31125568f78_31710015 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5fb5841cbd4191_70660016 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
-
+<p> logueado???? <?php echo $_smarty_tpl->tpl_vars['log']->value;?>
+ </p>
 <div class="w-75 mx-auto">
     <?php if ((isset($_smarty_tpl->tpl_vars['user']->value))) {?>
         <h2 class="display-4 text-capitalize grey-color container"> Administrar </h2>
@@ -40,7 +41,7 @@ $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_sm
 
         <?php if (!(isset($_smarty_tpl->tpl_vars['user']->value))) {?>
             <th class="th-valor text-center th-prop th-acciones "></th>
-            <th class="th-valor text-center th-prop th-acciones "> ACCIONES</th>
+            <th class="th-valor text-center th-prop th-acciones "> ACCIONES </th>
             <th class="th-valor text-center th-prop th-acciones th-borde-right "></th>
         <?php }?>
 

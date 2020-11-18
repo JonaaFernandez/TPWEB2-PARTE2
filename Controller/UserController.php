@@ -18,7 +18,7 @@ class UserController{
     }
 
     
-    function checklogueado(){ // CHEQUEA EL ESTADO DE LA SESION Y SU ULTIMA ACIVIDAD
+    /* function checklogueado(){ // CHEQUEA EL ESTADO DE LA SESION Y SU ULTIMA ACIVIDAD
 
         if (!isset($_SESSION['USERNAME'])){
             
@@ -27,15 +27,33 @@ class UserController{
         }else{
             if ( isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 300)) { 
         
-                $this->cont->LogOut();
+                $this->LogOut();
 
             }
             $_SESSION['LAST_ACTIVITY'] = time();
         } 
-    } 
+    }   */
+    public function checklogueado(){ // CHEQUEA EL ESTADO DE LA SESION Y SU ULTIMA ACIVIDAD
 
-    function Login(){
-        $this->view->ShowLogin();
+        if (!isset($_SESSION['USERNAME'])){
+
+            return 0;
+        }else{
+            if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 300)) { 
+        
+                $this->LogOut();
+                return 0;
+            }else{
+            $_SESSION['LAST_ACTIVITY'] = time();
+            return 1;
+            }   
+        } 
+    }
+
+
+
+    public function Login(){
+        $this->view->ShowLogin(0,'');
 
     }
 

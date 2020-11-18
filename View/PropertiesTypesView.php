@@ -23,12 +23,12 @@ class PropertiesTypesView{
 
 
 
-function showAllTypes($type){   // muestra todos los tipos de propiedad
+function showAllTypes($type,$log){   // muestra todos los tipos de propiedad
     $tipo=$type;
     $smarty = new Smarty();  
     $smarty->assign('title', $this->title); 
     $smarty->assign('tipito', $tipo);
-   
+    $smarty->assign('log', $log);
     $smarty->display('templates/listaTipos.tpl');
 
     }
@@ -41,22 +41,22 @@ function showAllTypes($type){   // muestra todos los tipos de propiedad
 
 
 
-    function ShowOneType($oneType){
+    function ShowOneType($oneType,$log){
         $smarty = new Smarty();  
         $smarty->assign('title', $this->title); 
         $smarty->assign('tipo', $oneType);
-  
+        $smarty->assign('log', $log);
         $smarty->display('templates/showOneType.tpl');
 
     }
         
 
 
-    function ShowOneEdit($oneType){
+    function ShowOneEdit($oneType,$log){
         $smarty = new Smarty();  
         $smarty->assign('title', $this->title); 
         $smarty->assign('tipo', $oneType);
-
+        $smarty->assign('log', $log);
         $smarty->display('templates/showFormEdit.tpl');
 
     }

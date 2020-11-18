@@ -14,18 +14,20 @@ class UserView{
             session_start();
         }         
         if(isset($_SESSION['USERNAME'])){
-            $this->smarty->assign('user', $_SESSION['USERNAME']);
+             $this->smarty->assign('user', $_SESSION['USERNAME']); 
+
         }
     }
 
 
 
-    function ShowLogin($message = ""){
+    function ShowLogin($log, $message = ""){
 
-        $smarty = new Smarty();
-        $smarty->assign('title', $this->title);
-        $smarty->assign('message', $message);  //muestra mensaje de error
-        $smarty->display('templates/login.tpl'); // muestro el template 
+/*         $smarty = new Smarty(); */
+        $this->smarty->assign('title', $this->title);
+        $this->smarty->assign('message', $message);  //muestra mensaje de error
+        $this->smarty->assign('log',$log);
+        $this->smarty->display('templates/login.tpl'); // muestro el template 
     
     }
 
@@ -36,9 +38,9 @@ class UserView{
     }
 
     function NewUser(){
-        $smarty = new Smarty();
-        $smarty->assign('title', 'Sign up');
-        $smarty->display('templates/signup.tpl'); 
+    /*     $smarty = new Smarty(); */
+        $this->smarty->assign('title', 'Sign up');
+        $this->smarty->display('templates/signup.tpl'); 
     }
 
 }

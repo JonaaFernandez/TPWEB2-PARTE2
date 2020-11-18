@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-11-17 00:54:17
-  from 'C:\xampp\htdocs\TPweb2parte2\templates\contacto.tpl' */
+/* Smarty version 3.1.34-dev-7, created on 2020-11-18 21:28:56
+  from 'C:\xampp\htdocs\TPWEB2-PARTE2\templates\contacto.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5fb31129b79136_43986813',
+  'unifunc' => 'content_5fb5840878b378_21206580',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'a4c83fafe8feadf0f3a791c5aa28ae79d0298c18' => 
+    '6802c4ad318f1904bd0f9676d68ae6f3f034e1d3' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\TPweb2parte2\\templates\\contacto.tpl',
-      1 => 1602726083,
+      0 => 'C:\\xampp\\htdocs\\TPWEB2-PARTE2\\templates\\contacto.tpl',
+      1 => 1605678050,
       2 => 'file',
     ),
   ),
@@ -22,9 +22,9 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5fb31129b79136_43986813 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
-?>
+function content_5fb5840878b378_21206580 (Smarty_Internal_Template $_smarty_tpl) {
+?> <?php $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?> 
 
  <div class="completo container mt-3">
         <section class="formulario col-xl-5">

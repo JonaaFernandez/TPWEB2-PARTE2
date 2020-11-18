@@ -1,0 +1,4 @@
+templates_c/
+Backup/
+libs/
+images/

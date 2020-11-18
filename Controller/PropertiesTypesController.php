@@ -37,7 +37,8 @@ class PropertiesTypesController{
 
    function showAll(){
         $types = $this->model->GetAll();
-        $this->view->ShowAllTypes($types);
+        $log=$this->cont->checklogueado();
+        $this->view->ShowAllTypes($types,$log);
         
     }
 
@@ -45,27 +46,41 @@ class PropertiesTypesController{
     function showType($params = null){
         $type = $params[':ID'];
         $oneType= $this->model->getType($type);
-        $this->view->ShowOneType($oneType); 
+        $log=$this->cont->checklogueado();
+        $this->view->ShowOneType($oneType,$log); 
 
     }
 
 
     function Insert(){
-        $this->cont->checklogueado();
-        if ((isset($_POST['input_name'])) && (isset($_POST['input_description'])) && ($_POST['input_name']!= "")  && ($_POST['input_description'] !="" )) {
-             $this->model->insert($_POST['input_name'],$_POST['input_description']);
-             $this->view->ShowListLocation();
-         } else {
-            $this->view->showerror("Los datos ingresados son incorrectos");
-        }
+        $log= $this->cont->checklogueado();
+        if (!$log) { 
+            header("Location: " . LOGIN);
+            die();
+          }
+          else {
+        
+            if ((isset($_POST['input_name'])) && (isset($_POST['input_description'])) && ($_POST['input_name']!= "")  && ($_POST['input_description'] !="" )) {
+                $this->model->insert($_POST['input_name'],$_POST['input_description']);
+                $this->view->ShowListLocation();
+            } else {
+                $this->view->showerror("Los datos ingresados son incorrectos");
+            }
+          }
     }
 
 
     function delete($params = null){
-        $this->cont->checklogueado();
-        $type_id = $params[':ID'];
-        $this->model->delete($type_id);
-        $this->view->ShowListLocation();
+        $log=$this->cont->checklogueado();
+        if (!$log) { 
+            header("Location: " . LOGIN);
+            die();
+          }
+          else {
+            $type_id = $params[':ID'];
+            $this->model->delete($type_id);
+            $this->view->ShowListLocation();
+          }
     }
 
 
@@ -76,18 +91,25 @@ class PropertiesTypesController{
         $this->cont->checklogueado();
         $type_id = $params[':ID'];
         $oneType= $this->model->getType($type_id);
-        $this->view->ShowOneEdit($oneType);
+        $log=$this->cont->checklogueado();
+        $this->view->ShowOneEdit($oneType,$log);
     }
 
 
     function Edit(){
-       $this->cont->checklogueado();
-       if ((isset($_POST['input_name'])) && (isset($_POST['input_description'])) && ($_POST['input_name']!= "")  && ($_POST['input_description'] !="" )) {
-         $this->model->updateType($_POST['input_id'],$_POST['input_name'],$_POST['input_description']);
-         $this->view->ShowListLocation();
-        }    else {
-        $this->view->showerror("Los datos ingresados son incorrectos");
-        }
+        $log= $this->cont->checklogueado();
+        if (!$log) { 
+            header("Location: " . LOGIN);
+            die();
+          }
+          else {
+        if ((isset($_POST['input_name'])) && (isset($_POST['input_description'])) && ($_POST['input_name']!= "")  && ($_POST['input_description'] !="" )) {
+            $this->model->updateType($_POST['input_id'],$_POST['input_name'],$_POST['input_description']);
+            $this->view->ShowListLocation();
+            }    else {
+            $this->view->showerror("Los datos ingresados son incorrectos");
+            }
+          }
     }
 
 

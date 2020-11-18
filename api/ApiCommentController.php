@@ -42,7 +42,6 @@ class ApiCommentController extends ApiController{
 
     public function AddComment($params = null){
         $body= $this->getData(); 
-        /* var_dump($body);   */    
         $comentarios = $this->model->InsertarComentario($body->comentario,$body->puntaje,$body->propiedad);
        
     } 

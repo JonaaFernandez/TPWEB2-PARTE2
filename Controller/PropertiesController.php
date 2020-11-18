@@ -21,7 +21,7 @@ class PropertiesController{
         $this->cont = new UserController();
     }
 
- /*    private function checklogueado(){ // CHEQUEA EL ESTADO DE LA SESION Y SU ULTIMA ACIVIDAD
+  /* public function checklogueado(){ // CHEQUEA EL ESTADO DE LA SESION Y SU ULTIMA ACIVIDAD
 
         if (!isset($_SESSION['USERNAME'])){
             
@@ -35,81 +35,119 @@ class PropertiesController{
             }
             $_SESSION['LAST_ACTIVITY'] = time();
         } 
-    } */
+    }  */
 
+   /*  public function checklogueado(){ // CHEQUEA EL ESTADO DE LA SESION Y SU ULTIMA ACIVIDAD
+
+        if (!isset($_SESSION['USERNAME'])){
+
+            return 0;
+        }else{
+            if ( isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 300)) { 
+        
+                $this->cont->LogOut();
+
+            }
+            $_SESSION['LAST_ACTIVITY'] = time();
+            return 1;
+        } 
+    }
+ */
 
     function Home(){
-  
-     $this->view->ShowHome();
+     $log = $this->cont->checklogueado();
+     $this->view->ShowHome($log);
     }
 
     function Alquileres(){
-     $this->view->ShowAlquileres();
+    $log = $this->cont->checklogueado();
+    echo 'checcklogueado =' . $log;
+    $this->view->ShowAlquileres($log);
     }
 
      
     function Contacto(){
-     $this->view->ShowContacto();
+    $log = $this->cont->checklogueado();
+     $this->view->ShowContacto($log);
     }
 
     function showAllProp(){ /* Muestra "ventas, dependiendo si estoy como admin o usuario */
      $prop = $this->model->GetAllProp();
      $typeProp = $this->typeModel->GetAll();
-    $this->view->ShowAll($prop,$typeProp);
+     $log = $this->cont->checklogueado();
+    $this->view->ShowAll($prop,$typeProp,$log);
     }
 
     
     function cargaProp($params = null){
-     $this->cont->checklogueado();
-     $prop_id = $params[':ID'];
-     $prop = $this->model->GetProp($prop_id);
-     $typeProp = $this->typeModel->GetAll();
-     $this->view->ShowOneEdit($prop,$typeProp);
-        
+    $log = $this->cont->checklogueado();
+    if (!$log) { 
+      /*   $this->cont->Login(); */
+      header("Location: " . LOGIN);
+      die();
+    }
+    else {
+        $prop_id = $params[':ID'];
+        $prop = $this->model->GetProp($prop_id);
+        $typeProp = $this->typeModel->GetAll();
+        $this->view->ShowOneEdit($prop,$typeProp,$log);
+    }   
     }
 
    
 
 
     function formNew(){
-        $this->cont->checklogueado();
+        $log = $this->cont->checklogueado();
         $typeProp = $this->typeModel->GetAll();
-        $this->view->showFormNew($typeProp);
+        $this->view->showFormNew($typeProp,$log);
     }
 
  
   
     function InsertProp(){
-        $this->cont->checklogueado();
+        $log = $this->cont->checklogueado();
+        if (!$log){
+            header("Location: " . LOGIN);
+            die();
+        }
+        else{
         if ((isset($_POST['input_name'])) && (isset($_POST['input_value'])) && ($_POST['input_name']!= "")  && ($_POST['input_value'] !="" )) {
              $typeProp = $this->typeModel->GetAll();
              $this->model->insertProp($_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_description'],$_POST['input_value'],$_POST['input_date']);
-             $this->view->showformNew($typeProp);
+             $this->view->showformNew($typeProp,$log);
         } else {
             $this->view->showerror("Los datos ingresados son incorrectos");
         }
     }
+    }
 
       
     function formEditProp(){
-        $this->cont->checklogueado();
+        $log = $this->cont->checklogueado();
         $oneProp= $this->model->getProp($_POST['ID']);
         $typeProp = $this->typeModel->GetAllTypesProp();
-        $this->view->ShowOneEdit($oneProp,$typeProp);
+        $this->view->ShowOneEdit($oneProp,$typeProp,$log);
       
     }
 
     
     function EditProp(){
-        $this->cont->checklogueado();
-        $id = ($_POST['input_id']);
-        if ((isset($_POST['input_name'])) && (isset($_POST['input_value'])) && ($_POST['input_name']!= "")  && ($_POST['input_value'] !="" )) {
-            $this->model->updateProp($_POST['input_id'],$_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_value'],$_POST['input_description'],$_POST['input_date']);
-            $this->view->ShowListLocation();
+        $log = $this->cont->checklogueado();
+        if ($log==0){
+          /*   $this->cont->Login(); */
+          header("Location: " . LOGIN);
+          die();
         }
-        else {
-        $this->view->showError("Los datos ingresados son incorrectos");
-
+        else{
+          /*   $id = ($_POST['input_id']); */
+            if ((isset($_POST['input_name'])) && (isset($_POST['input_value'])) && ($_POST['input_name']!= "")  && ($_POST['input_value'] !="" )) {
+                $this->model->updateProp($_POST['input_id'],$_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_value'],$_POST['input_description'],$_POST['input_date']);
+                $this->view->ShowListLocation();
+            }
+            else {
+            $this->view->showError("Los datos ingresados son incorrectos");
+        }
         }
     }
  
@@ -120,7 +158,8 @@ class PropertiesController{
         $id=$oneProp[0]->tipo;
         $typeProp = $this->typeModel->GetType($id);
          $type=$typeProp[0]->nombre; 
-       $this->view->ShowOne($oneProp,$type); 
+         $log = $this->cont->checklogueado();
+       $this->view->ShowOne($oneProp,$type,$log); 
     }
 
    
@@ -129,19 +168,22 @@ class PropertiesController{
         $id = ($_POST['input_type']);
         $prop = $this->model->GetByType($id);
         $typeProp = $this->typeModel->GetAll();
-        $this->view->ShowAll($prop,$typeProp,$this->admin); 
+        $log = $this->cont->checklogueado();;
+        $this->view->ShowAll($prop,$typeProp,$log); 
     }
   
     function delProp($params = null){
-        $this->cont->checklogueado();
-        $prop_id = $params[':ID'];
-        $this->model->deleteProp($prop_id);
-        $this->view->ShowListLocation();
+        $log = $this->cont->checklogueado();
+        if (!$log){
+            $this->cont->login();
+        }else{
+            $prop_id = $params[':ID'];
+            $this->model->deleteProp($prop_id);
+            $this->view->ShowListLocation();
+        }
     }
 
-    function GetComentarios($params = null){
-        $this->view->ShowComentarios();
-    }
+   
 }
 
 ?>

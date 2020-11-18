@@ -1,5 +1,5 @@
 {include file="header.tpl"}
-
+<p> logueado???? {$log} </p>
 <div class="w-75 mx-auto">
     {if isset($user)}
         <h2 class="display-4 text-capitalize grey-color container"> Administrar </h2>
@@ -14,7 +14,7 @@
 
         {if !isset($user)}
             <th class="th-valor text-center th-prop th-acciones "></th>
-            <th class="th-valor text-center th-prop th-acciones "> ACCIONES</th>
+            <th class="th-valor text-center th-prop th-acciones "> ACCIONES </th>
             <th class="th-valor text-center th-prop th-acciones th-borde-right "></th>
         {/if}
 

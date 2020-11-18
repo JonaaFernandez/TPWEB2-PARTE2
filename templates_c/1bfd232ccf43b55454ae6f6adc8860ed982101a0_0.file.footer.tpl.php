@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-11-16 23:35:10
-  from 'C:\xampp\htdocs\TPweb2parte2\templates\footer.tpl' */
+/* Smarty version 3.1.34-dev-7, created on 2020-11-18 21:28:54
+  from 'C:\xampp\htdocs\TPWEB2-PARTE2\templates\footer.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5fb2fe9edbd4c2_18084515',
+  'unifunc' => 'content_5fb58406604fa3_44726201',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '488570375482ab79011e48750fea633eb1dad754' => 
+    '1bfd232ccf43b55454ae6f6adc8860ed982101a0' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\TPweb2parte2\\templates\\footer.tpl',
-      1 => 1602726083,
+      0 => 'C:\\xampp\\htdocs\\TPWEB2-PARTE2\\templates\\footer.tpl',
+      1 => 1605307758,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5fb2fe9edbd4c2_18084515 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5fb58406604fa3_44726201 (Smarty_Internal_Template $_smarty_tpl) {
 ?>  <!-- COMIENZA FOOTER -->
 
   <footer class="page-footer font-small stylish-color-dark pt-4 ">
