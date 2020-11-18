@@ -64,7 +64,7 @@ class PropertiesTypesController{
                 $this->model->insert($_POST['input_name'],$_POST['input_description']);
                 $this->view->ShowListLocation();
             } else {
-                $this->view->showerror("Los datos ingresados son incorrectos");
+                $this->view->showerror($log,"Los datos ingresados son incorrectos");
             }
           }
     }
@@ -107,7 +107,7 @@ class PropertiesTypesController{
             $this->model->updateType($_POST['input_id'],$_POST['input_name'],$_POST['input_description']);
             $this->view->ShowListLocation();
             }    else {
-            $this->view->showerror("Los datos ingresados son incorrectos");
+            $this->view->showerror($log,"Los datos ingresados son incorrectos");
             }
           }
     }

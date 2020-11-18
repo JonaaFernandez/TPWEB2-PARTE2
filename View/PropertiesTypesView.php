@@ -62,11 +62,12 @@ function showAllTypes($type,$log){   // muestra todos los tipos de propiedad
     }
 
 
-    function ShowError($mensaje = ""){
+    function ShowError($log, $mensaje = ""){
 
         $smarty = new Smarty();
         $smarty->assign('title', $this->title);
         $smarty->assign('mensaje', $mensaje);  
+        $smarty->assign('log', $log);
         $smarty->display('templates/error.tpl'); 
     
     }

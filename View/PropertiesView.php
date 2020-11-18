@@ -80,13 +80,7 @@ function showAll($prop,$typeProp,$log){   //VENTAS
     }
 
     function showOneEdit($prop,$typeProp,$log){
-        $id=$prop[0]->id;
-        $tipo = $prop[0]->tipo;
-        $nombre = $prop[0]->nombre;
-        $direccion=$prop[0]->direccion;
-        $descripcion=$prop[0]->descripcion;
-        $fecha=$prop[0]->fecha;
-        $valor=$prop[0]->valor; 
+        
         $this->title="Actualizar datos";
         $smarty = new Smarty();  
         $smarty->assign('title', $this->title); 
@@ -98,11 +92,12 @@ function showAll($prop,$typeProp,$log){   //VENTAS
     }
 
    
-    function ShowError($mensaje = ""){
+    function ShowError($log, $mensaje = ""){
 
         $smarty = new Smarty();
         $smarty->assign('title', $this->title);
         $smarty->assign('mensaje', $mensaje);  
+        $smarty->assign('log', $log);
         $smarty->display('templates/error.tpl'); 
     
     }

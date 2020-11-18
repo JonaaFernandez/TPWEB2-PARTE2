@@ -117,7 +117,7 @@ class PropertiesController{
              $this->model->insertProp($_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_description'],$_POST['input_value'],$_POST['input_date']);
              $this->view->showformNew($typeProp,$log);
         } else {
-            $this->view->showerror("Los datos ingresados son incorrectos");
+            $this->view->showerror($log,"Los datos ingresados son incorrectos");
         }
     }
     }
@@ -146,7 +146,7 @@ class PropertiesController{
                 $this->view->ShowListLocation();
             }
             else {
-            $this->view->showError("Los datos ingresados son incorrectos");
+            $this->view->showError($log,"Los datos ingresados son incorrectos");
         }
         }
     }
