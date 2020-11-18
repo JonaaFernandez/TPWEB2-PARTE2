@@ -1,5 +1,0 @@
-templates_c
-Backup/
-libs/
-images/
-testignore.txt
