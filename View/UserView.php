@@ -19,11 +19,12 @@ class UserView{
         }
     }
 
-    function showAll($users,$log){   // muestra todos los tipos de propiedad
+    function showAll($users,$log,$user){   // muestra todos los tipos de propiedad
         $smarty = new Smarty();  
         $smarty->assign('title', $this->title); 
         $smarty->assign('log', $log);
         $smarty->assign('usuarios', $users);
+        $smarty->assign('user', $user);
         $smarty->display('templates/listaUsers.tpl');
     
         }
@@ -65,12 +66,13 @@ class UserView{
         $this->smarty->display('templates/modifyUser.tpl'); 
     }
 
-    function ShowError($log, $mensaje = ""){
+    function ShowError($log, $user, $mensaje = ""){
 
         $smarty = new Smarty();
         $smarty->assign('title', $this->title);
         $smarty->assign('mensaje', $mensaje);  
         $smarty->assign('log', $log);
+        $smarty->assign('user', $user);
         $smarty->display('templates/error.tpl'); 
     
     }

@@ -129,7 +129,8 @@ class UserController{
         $users = $this->model->GetAll();
         $log = $this->checklogueado();
         if ($log) {
-            $this->view->ShowAll($users,$log); 
+            $user= $_SESSION['USERNAME'];
+            $this->view->ShowAll($users,$log,$user); 
         } else {
             header("Location: " . LOGIN);
           die();
@@ -151,6 +152,7 @@ class UserController{
     }
 
     function SaveUser(){
+             $user= $_SESSION['USERNAME'];
              $log= $this->checklogueado(); 
             if (!$log) { 
                 header("Location: " . LOGIN);
@@ -163,7 +165,7 @@ class UserController{
                 $this->ShowAllUsers($log);
             }    
             else {
-                $this->view->showerror("Los datos ingresados son incorrectos");
+                $this->view->showerror($log , $user, "Los datos ingresados son incorrectos");
             }
         }
     }
@@ -181,7 +183,7 @@ class UserController{
                     $this->view->ModifyUser($Oneuser,$log);    
                 }
                 else{
-                    $this->view->ShowError($log, "No tiene permisos para realizar la operacion");
+                    $this->view->ShowError($log, $user, "No tiene permisos para realizar la operacion");
                 }
             }
             else{
@@ -198,10 +200,10 @@ class UserController{
             $admin = $userFromDB->admin;
             if ($admin == 1){
                 $this->model->DeleteOneUser($id);
-                $this->ShowAllUsers($log);
+                $this->ShowAllUsers();
             }
             else{
-                $this->view->ShowError($log, "No tiene permisos para realizar la operacion");
+                $this->view->ShowError($log,$user,  "No tiene permisos para realizar la operacion");
             }
         }
         else{
