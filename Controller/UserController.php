@@ -85,16 +85,7 @@ class UserController{
         }     
     }
 
-public function ShowAll(){
-    $users = $this->model->GetAll();
-    $log = $this->checklogueado();
-    if ($log) {
-        $this->view->ShowAll($users,$log); 
-    } else {
-        header("Location: " . LOGIN);
-      die();
-    }
-}
+
 
     function LogOut(){
         session_start();
@@ -131,14 +122,95 @@ public function ShowAll(){
             else{
                 $this->view->ShowLogin("Los datos ingresados son incorrectos");             
             }
-          
-   }
-        function newUser(){
-            $this->view->NewUser();
+            
+     }
+
+    public function ShowAllUsers(){
+        $users = $this->model->GetAll();
+        $log = $this->checklogueado();
+        if ($log) {
+            $this->view->ShowAll($users,$log); 
+        } else {
+            header("Location: " . LOGIN);
+          die();
         }
+    }
 
+    function newUser(){
+            $this->view->NewUser();
+    }
 
+    function viewOneUser($params = null){
+            $id = $params[':ID'];
+            $Oneuser = $this->model->GetOneUser($id);
+            $log = $this->checklogueado();
+           
+                if($log){
+                    $this->view->ShowOneUser($Oneuser,$log);    
+                }
+    }
+
+    function SaveUser(){
+             $log= $this->checklogueado(); 
+            if (!$log) { 
+                header("Location: " . LOGIN);
+                die();
+              }
+              else {
+            if ((isset($_POST['input_user'])) && (isset($_POST['input_email'])) && (isset($_POST['input_admin'])) && ($_POST['input_user']!= "") && ($_POST['input_email'] !="" ) && ($_POST['input_admin'] !="" )) {
+                $this->model->ModifUser($_POST['input_id'],$_POST['input_user'],$_POST['input_email'] ,$_POST['input_admin']) ;
+                
+                $this->ShowAllUsers($log);
+            }    
+            else {
+                $this->view->showerror("Los datos ingresados son incorrectos");
+            }
+        }
+    }
+     
+    function modificarUsr($params = null){
+            $log = $this->checklogueado();
+            $id = $params[':ID'];
+            if ($log){
+                $Oneuser = $this->model->GetOneUser($id);
+                $user= $_SESSION['USERNAME'];
+                $userFromDB= $this->model->Getuser($user);
+                $admin = $userFromDB->admin;
+                
+                if ($admin == 1){
+                    $this->view->ModifyUser($Oneuser,$log);    
+                }
+                else{
+                    $this->view->ShowError($log, "No tiene permisos para realizar la operacion");
+                }
+            }
+            else{
+                header("Location: " . LOGIN);
+            }
+    }
+        
+    function DeleteUser($params = null) {
+        $log = $this->checklogueado();
+        $id = $params[':ID'];
+        if ($log){
+            $user= $_SESSION['USERNAME'];
+            $userFromDB= $this->model->Getuser($user);
+            $admin = $userFromDB->admin;
+            if ($admin == 1){
+                $this->model->DeleteOneUser($id);
+                $this->ShowAllUsers($log);
+            }
+            else{
+                $this->view->ShowError($log, "No tiene permisos para realizar la operacion");
+            }
+        }
+        else{
+            header("Location: " . LOGIN);
+
+        }
+        
     }
     
+}
 
 ?>

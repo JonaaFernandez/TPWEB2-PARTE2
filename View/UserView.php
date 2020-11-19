@@ -51,6 +51,29 @@ class UserView{
         $this->smarty->display('templates/signup.tpl'); 
     }
 
+    function ShowOneUser($User,$log){
+        $this->smarty->assign('title', 'Usuarios');
+        $this->smarty->assign('OneUser', $User); 
+        $this->smarty->assign('log', $log); 
+        $this->smarty->display('templates/ShowOneUser.tpl'); 
+    } 
+
+    function ModifyUser($OneUser,$log){
+        $this->smarty->assign('title', 'Usuarios');
+        $this->smarty->assign('Oneuser', $OneUser); 
+        $this->smarty->assign('log', $log); 
+        $this->smarty->display('templates/modifyUser.tpl'); 
+    }
+
+    function ShowError($log, $mensaje = ""){
+
+        $smarty = new Smarty();
+        $smarty->assign('title', $this->title);
+        $smarty->assign('mensaje', $mensaje);  
+        $smarty->assign('log', $log);
+        $smarty->display('templates/error.tpl'); 
+    
+    }
 }
 
 

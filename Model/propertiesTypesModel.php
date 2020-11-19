@@ -42,7 +42,7 @@ class PropertiesTypesModel{
    function updateType($id,$nombre,$descripcion){
        $sentencia = $this->db->prepare("UPDATE tipos_propiedades SET nombre=?, descripcion=? WHERE id=?");
        $sentencia->execute([$nombre, $descripcion, $id]);
-return;
+       return;
    }
    
 }

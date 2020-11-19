@@ -57,10 +57,14 @@ $r->addRoute("coments", "GET", "PropertiesController", "GetComentarios");
     $r->addRoute("logout", "GET", "UserController", "LogOut");
     $r->addRoute("registro", "POST", "UserController", "SignUp");
     $r->addRoute("registrarse", "GET", "UserController", "newUser");
-    $r->addRoute("usuarios", "GET", "UserController", "ShowAll");
-    $r->addRoute("verUsr/:ID", "GET", "UserController", "ShowAll");
-    $r->addRoute("modificarUsr", "POST", "UserController", "ShowAll");
-    $r->addRoute("eliminarUsr/:ID", "GET", "UserController", "ShowAll");
+
+    $r->addRoute("usuarios", "GET", "UserController", "ShowAllUsers");
+    $r->addRoute("verUsr/:ID", "GET", "UserController", "ViewOneUser");
+
+    $r->addRoute("modificarUsr/:ID", "GET", "UserController", "modificarUsr");
+    $r->addRoute("ConfirmarModUsr","POST", "UserController", "SaveUser");
+
+    $r->addRoute("eliminarUsr/:ID", "GET", "UserController", "DeleteUser");
 
 
  

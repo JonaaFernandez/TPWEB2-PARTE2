@@ -31,7 +31,7 @@
 
                      <div id="navbarSupportedContent" class="collapse navbar-collapse">
                          <ul class="navbar-nav ml-auto">
-                             <li class="nav-item "><a href="home" class="nav-link ">Home<span class="sr-only "></span></a></li>
+                             <li class="nav-item "><a href="home" class="nav-link ">Home<span></a></li>
                              <li class="nav-item "><a href="ventas" class="nav-link ">Ventas</a></li>
                              <li class="nav-item "><a href="alquileres" class="nav-link ">Alquileres</a></li>
                              <li class="nav-item "><a href="contacto" class="nav-link ">Contacto</a></li>
@@ -69,6 +69,7 @@
 
          </div>
          </nav>
+       
         {if isset($user)} 
          <div class="row">
              <h4 class=" font-weight-light container mt-3  gris-color d-flex justify-content-end">Bienvenido: <span class="font-weight-bold ml-2">  {$user} </span></h4>
