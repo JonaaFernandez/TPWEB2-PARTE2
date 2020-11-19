@@ -19,6 +19,14 @@ class UserView{
         }
     }
 
+    function showAll($users,$log){   // muestra todos los tipos de propiedad
+        $smarty = new Smarty();  
+        $smarty->assign('title', $this->title); 
+        $smarty->assign('log', $log);
+        $smarty->assign('usuarios', $users);
+        $smarty->display('templates/listaUsers.tpl');
+    
+        }
 
 
     function ShowLogin($log, $message = ""){

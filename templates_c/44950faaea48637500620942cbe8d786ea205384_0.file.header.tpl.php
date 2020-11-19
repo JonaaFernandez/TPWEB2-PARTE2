@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-11-18 23:16:57
+/* Smarty version 3.1.34-dev-7, created on 2020-11-19 17:10:55
   from 'C:\xampp\htdocs\TPWEB2-PARTE2\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5fb59d592e14a1_88579796',
+  'unifunc' => 'content_5fb6990fc9df84_17488479',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '44950faaea48637500620942cbe8d786ea205384' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPWEB2-PARTE2\\templates\\header.tpl',
-      1 => 1605737550,
+      1 => 1605802250,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5fb59d592e14a1_88579796 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5fb6990fc9df84_17488479 (Smarty_Internal_Template $_smarty_tpl) {
 ?> <!DOCTYPE html>
  <html lang="en">
 
@@ -64,7 +64,8 @@ function content_5fb59d592e14a1_88579796 (Smarty_Internal_Template $_smarty_tpl)
                              <li class="nav-item "><a href="contacto" class="nav-link ">Contacto</a></li>
                              <li class="nav-item "><a href="verTodosLosTipos" class="nav-link ">Tipos de Propiedad</a></li>
                          <?php if ($_smarty_tpl->tpl_vars['log']->value == 1) {?>
-                                                                                  
+                        
+                            <li class="nav-item "><a href="usuarios" class="nav-link ">Usuarios </a></li>
                              <li class="nav-item "><a href="logout" class="nav-link ">Cerrar sesion </a></li>
                              <?php } else { ?>
                              <li class="nav-item "><a href="login" class="nav-link ">Iniciar sesion</a></li>  

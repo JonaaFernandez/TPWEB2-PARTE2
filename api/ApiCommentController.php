@@ -42,9 +42,15 @@ class ApiCommentController extends ApiController{
 
     public function AddComment($params = null){
         $body= $this->getData(); 
-        $comentarios = $this->model->InsertarComentario($body->comentario,$body->puntaje,$body->propiedad);
-       
-    } 
+        $newId = $this->model->InsertarComentario($body->comentario,$body->puntaje,$body->propiedad);
+        if ($newId != 0){
+            $this->view->response('El comentario ha sido guardado exitosamente con el id ' .   $newId,200);
+        }
+        else {
+            $this->view->response('El comentario no ha podido guardarse',404);
+        }
+    }
+} 
     
     
 
@@ -58,7 +64,7 @@ class ApiCommentController extends ApiController{
 
 
 
-}
+
 
 // EN API REST LAS CLASES DE PHP NO SE CIERRAN NIGUNA!!! 
     

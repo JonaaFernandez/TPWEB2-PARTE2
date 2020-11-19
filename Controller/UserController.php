@@ -85,6 +85,17 @@ class UserController{
         }     
     }
 
+public function ShowAll(){
+    $users = $this->model->GetAll();
+    $log = $this->checklogueado();
+    if ($log) {
+        $this->view->ShowAll($users,$log); 
+    } else {
+        header("Location: " . LOGIN);
+      die();
+    }
+}
+
     function LogOut(){
         session_start();
         session_destroy();

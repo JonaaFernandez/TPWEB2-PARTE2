@@ -23,8 +23,7 @@ class CommentModel{
     function InsertarComentario($comentario,$puntaje,$propiedad){ // tambien va $usuario?
         $sentencia = $this->db->prepare("INSERT INTO comentarios(comentario, puntaje, propiedad) VALUES(?,?,?)");
         $sentencia->execute([$comentario,$puntaje,$propiedad]);
-       
-
+       return $this->db->lastInsertId();
     }
     
       function GetComm($id){

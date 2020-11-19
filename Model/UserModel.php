@@ -13,14 +13,27 @@ class UserModel{
         $sentencia->execute(array($user));
         return $sentencia->fetch(PDO::FETCH_OBJ);
     }
+
+    public function GetAll(){
+
+        $sentencia = $this->db->prepare("SELECT * FROM usuarios");
+        $sentencia->execute(array());
+        return $sentencia->fetchAll(PDO::FETCH_OBJ);
+    }
+
+
       function InsertUser($newUser,$newEmail,$newPassw){
         $sentencia = $this->db->prepare("INSERT INTO usuarios(user, email, password, admin) VALUES(?,?,?,?)");
         $sentencia->execute([$newUser, $newEmail,$newPassw,False]);
     return;
-
-
-      }
 }
+    function DelUser($user_id){
+      $sentencia = $this->db->prepare("DELETE FROM usuarios WHERE id=?");
+      return $sentencia->execute(array($user_id));
+  }
+
+}
+
 
 ?>
 
