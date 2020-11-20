@@ -3,12 +3,9 @@
 
 class ApiView {
 
-    public function response($data){  
-    /* echo "<br>"; */
-    echo json_encode($data); // manden lo que manden sabe devolver en formato de JSON
-    }
 
-   /*  public function response($data, $status) {
+
+     public function response($data, $status) {
         header("Content-Type: application/json");
         header("HTTP/1.1 " . $status . " " . $this->requestStatus($status));
         echo json_encode($data);
@@ -22,7 +19,7 @@ class ApiView {
           500 => "Internal Server Error"
         );
         return (isset($status[$code]))? $status[$code] : $status[500];
-    } */
+    } 
 
 
 

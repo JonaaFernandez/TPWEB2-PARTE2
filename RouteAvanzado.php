@@ -47,8 +47,8 @@
     $r->addRoute("mostrarPorTipo", "POST", "PropertiesController", "showByType");
 
 //Comentarios
-$r->addRoute("coments", "GET", "PropertiesController", "GetComentarios");
- 
+     $r->addRoute("coments/:ID", "GET", "PropertiesController", "GetComentarios");
+  
 
 //---------------------------------------- BBDD - user -----------------------------------------
 

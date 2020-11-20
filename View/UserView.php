@@ -17,15 +17,19 @@ class UserView{
              $this->smarty->assign('user', $_SESSION['USERNAME']); 
 
         }
+        else if (isset($_SESSION['registrado'])){
+            $this->smarty->assign('registrado', $_SESSION['registrado']); 
+
+       }
     }
 
     function showAll($users,$log,$user){   // muestra todos los tipos de propiedad
-        $smarty = new Smarty();  
-        $smarty->assign('title', $this->title); 
-        $smarty->assign('log', $log);
-        $smarty->assign('usuarios', $users);
-        $smarty->assign('user', $user);
-        $smarty->display('templates/listaUsers.tpl');
+         
+        $this->smarty->assign('title', $this->title); 
+        $this->smarty->assign('log', $log);
+        $this->smarty->assign('usuarios', $users);
+        $this->smarty->assign('user', $user);
+        $this->smarty->display('templates/listaUsers.tpl');
     
         }
 

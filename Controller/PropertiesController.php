@@ -183,7 +183,16 @@ class PropertiesController{
         }
     }
 
-   
+    function GetComentarios($params = null){
+        $log = $this->cont->checklogueado();
+        $coment = $params[':ID']; 
+        $data =  $this->model->getProp($coment);
+        $this->view->ComentariosPropiedades($log,$data);
+        
+
+
+
+   }
 }
 
 ?>

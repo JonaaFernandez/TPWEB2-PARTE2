@@ -583,4 +583,7 @@ body {
     .altura-input {
         height: 10px;
     }
+    .ocultar {
+        display: none;
+    }
 }

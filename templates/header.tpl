@@ -36,7 +36,7 @@
                              <li class="nav-item "><a href="alquileres" class="nav-link ">Alquileres</a></li>
                              <li class="nav-item "><a href="contacto" class="nav-link ">Contacto</a></li>
                              <li class="nav-item "><a href="verTodosLosTipos" class="nav-link ">Tipos de Propiedad</a></li>
-                         {if $log == 1}
+                         {if isset($user) || isset($registrado)}
                         
                             <li class="nav-item "><a href="usuarios" class="nav-link ">Usuarios </a></li>
                              <li class="nav-item "><a href="logout" class="nav-link ">Cerrar sesion </a></li>
@@ -70,11 +70,17 @@
          </div>
          </nav>
        
-        {if isset($user)} 
+        {if isset($registrado)} 
          <div class="row">
-             <h4 class=" font-weight-light container mt-3  gris-color d-flex justify-content-end">Bienvenido: <span class="font-weight-bold ml-2">  {$user} </span></h4>
+             <h4 class=" font-weight-light container mt-3  gris-color d-flex justify-content-end">Bienvenido: <span class="font-weight-bold ml-2">  {$registrado} </span></h4>
          </div>
         {/if}  
+        {if isset($user)} 
+            <div class="row">
+                <h4 class=" font-weight-light container mt-3  gris-color d-flex justify-content-end">Bienvenido: <span class="font-weight-bold ml-2">  {$user} </span></h4>
+            </div>
+           {/if}  
+
 
          </div>
      </header>

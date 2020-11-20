@@ -12,11 +12,12 @@
         <th class="th-nombre text-center th-prop th-prop-largo ">NOMBRE</th>
         <th class="th-valor text-center th-prop th-prop-largo "> VALOR en U$S</th>
 
-        {if !isset($user)}
+      
             <th class="th-valor text-center th-prop th-acciones "></th>
             <th class="th-valor text-center th-prop th-acciones "> ACCIONES </th>
             <th class="th-valor text-center th-prop th-acciones th-borde-right "></th>
-        {/if}
+            <th class="th-valor text-center th-prop th-acciones th-borde-right "> COMENTARIOS </th>
+     
 
 
         {foreach from=$propiedad item=tipoprop} {* propiedades *}
@@ -38,6 +39,8 @@
                         <td class="p-0 border-btn "><a href="ver/{$tipoprop->id}" class="p-1 m-1 bg-dark ancho-ver "> VER </td>
                         <td class="p-0 border-btn "><a href="modificar/{$tipoprop->id}" class="p-1 m-1 bg-dark ancho-modif"> MODIFICAR </td>
                         <td class="p-0 th-borde-right border-btn"> <a href="eliminar/{$tipoprop->id}" class=" p-1 m-1 bg-dark ancho-ver"> ELIMINAR </td>
+                        <td class="p-0 th-borde-right border-btn"> <a href="coments/{$tipoprop->id}" class=" p-1 m-1 bg-dark ancho-ver"> COMENTARIOS </td>
+
                   {*   {/if} *}
              {*        {if isset($user)} *}
 {*                         <td class="p-0 border-btn  th-borde-right"> <a href="ver/{$tipoprop->id}" class="p-1 m-1 bg-dark ancho-ver "> VER </td>

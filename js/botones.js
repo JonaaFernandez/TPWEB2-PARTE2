@@ -1,12 +1,9 @@
-"use strict";
-document.addEventListener('DOMContentLoaded', function (){ 
+"use strict"
+document.addEventListener('DOMContentLoaded', function() {
 
-document.querySelector(".boton_menu").addEventListener("click", toggleMenu);
+    document.querySelector(".boton_menu").addEventListener("click", toggleMenu);
 
-function toggleMenu() {
-    document.querySelector(".botonera").classList.toggle("show");
-}
+    function toggleMenu() {
+        document.querySelector(".botonera").classList.toggle("show");
+    }
 })
-
-
-

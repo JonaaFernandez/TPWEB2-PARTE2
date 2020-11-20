@@ -10,12 +10,16 @@ class PropertiesView{
     function __construct(){
         $this->title = "Tu Inmobiliaria";
         $this->smarty = new Smarty(); 
-        /* if(session_status() !== PHP_SESSION_ACTIVE){
+         if(session_status() !== PHP_SESSION_ACTIVE){
             session_start();
         }         
         if(isset($_SESSION['USERNAME'])){
             $this->smarty->assign('user', $_SESSION['USERNAME']);
-        } */
+        } 
+        else if (isset($_SESSION['registrado'])){
+            $this->smarty->assign('registrado', $_SESSION['registrado']); 
+
+       }
     } 
     
    
@@ -47,15 +51,12 @@ class PropertiesView{
 
 
 
-function showAll($prop,$typeProp,$log){   //VENTAS
-    $propiedad=$prop;
-    $tipo=$typeProp;
-    $smarty = new Smarty();  
-    $smarty->assign('title', $this->title); 
-    $smarty->assign('propiedad', $prop); 
-    $smarty->assign('tipo', $typeProp);
-    $smarty->assign('log', $log);
-    $smarty->display('templates/listapropiedades.tpl');                
+function showAll($prop,$typeProp,$log){   //VENTASs
+    $this->smarty->assign('title', $this->title); 
+    $this->smarty->assign('propiedad', $prop); 
+    $this->smarty->assign('tipo', $typeProp);
+    $this->smarty->assign('log', $log);
+    $this->smarty->display('templates/listapropiedades.tpl');                
     }
 
      
@@ -117,6 +118,13 @@ function showAll($prop,$typeProp,$log){   //VENTAS
         $smarty->display('templates/comentarios.tpl'); 
 
 
+
+    }
+    function ComentariosPropiedades($log,$data){
+        $this->smarty->assign('title', 'Comentarios');
+        $this->smarty->assign('log', $log);
+        $this->smarty->assign('data', $data);
+        $this->smarty->display('templates/comentarios.tpl'); 
 
     }
 }

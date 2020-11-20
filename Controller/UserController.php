@@ -68,12 +68,19 @@ class UserController{
             
             if(isset($userFromDB) && $userFromDB){               
                 if(password_verify($passw, $userFromDB->password)){
-                    
+                    if ($userFromDB->admin == 1){
+                        session_start();
+                        $_SESSION['USERNAME'] = $user; /* $userFromDB->user; */
+                        $_SESSION['LAST_ACTIVITY'] = time();
+                         $this->view->BackHome();     
+                    }
+                   else if( $userFromDB->admin ==0){
                     session_start();
-                   
-                    $_SESSION['USERNAME'] = $user; /* $userFromDB->user; */
+                    $_SESSION['registrado'] = $user; /* $userFromDB->user; */
                     $_SESSION['LAST_ACTIVITY'] = time();
                      $this->view->BackHome();     
+                   }
+                  
 
                           
                 }else{
@@ -111,7 +118,7 @@ class UserController{
                 $hash = password_hash($newPassw, PASSWORD_DEFAULT);
                 $this->model->InsertUser($newUser,$newEmail,$hash);  
                 session_start();    
-                $_SESSION['USERNAME']= $newUser;
+                $_SESSION['registrado']= $newUser;
                 $_SESSION['LAST_ACTIVITY'] = time();    
                 $this->view->BackHome();
                 }else{

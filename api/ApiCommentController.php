@@ -15,22 +15,18 @@ class ApiCommentController extends ApiController{
     }
 
 
-    public function ShowAllComments($params = null){
+    public function ShowAllByProp($params = null){
         $propiedad = $params[':ID'];
         $comentarios = $this->model->GetCommentByProp($propiedad);
-        if ($comentarios){
-            $this->view->response($comentarios,200);  // devuelve en formato de json
-        }
-        else{
-            $this->view->response("No hay comentarios para la propiedad numero " . $propiedad, 404); 
-        }
         
+            $this->view->response($comentarios,200);  // devuelve en formato de json
         }
 
 
     public function DelComment($params = null){
         $comentario_id = $params[':ID'];
         $comment= $this->model->GetComm($comentario_id);
+        
         if ($comment){
             $this->model->DelComment($comentario_id);
             $this->view->response('El comentario ' .  $comentario_id . ' ha sido borrado',200);
@@ -44,7 +40,7 @@ class ApiCommentController extends ApiController{
         $body= $this->getData(); 
         $newId = $this->model->InsertarComentario($body->comentario,$body->puntaje,$body->propiedad);
         if ($newId != 0){
-            $this->view->response('El comentario ha sido guardado exitosamente con el id ' .   $newId,200);
+            $this->view->response('El comentario ha sido guardado exitosamente con el id ' .   $newId,201);
         }
         else {
             $this->view->response('El comentario no ha podido guardarse',404);
