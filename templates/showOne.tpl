@@ -40,12 +40,17 @@
         <label class="form-check-label" for=" "></label>
     </div>
     <div class="form-group">
-     {if $propiedad[0]->imagen}
-        <img src='uploads/'{$propiedad[0]->imagen}>
-   {/if}
-</div>
- 
-   <a href="ventas" type="button" class="btn btn-primary  ml-0 bg-dark" value="volver" > VOLVER </a>
+        {* {if $propiedad[0]->imagen}
+            <img src='../uploads/' {$propiedad[0]->imagen}>
+        {/if} *}
+        {if $propiedad[0]->imagen}
+            <img width="300px" height="300px" src="uploads/{$propiedad[0]->imagen}">
+        {else}
+            <p> No hay imagen </p>
+        {/if}
+    </div>
+
+    <a href="ventas" type="button" class="btn btn-primary  ml-0 bg-dark" value="volver"> VOLVER </a>
 </div>
 
 

@@ -2,7 +2,7 @@
 require_once "UserController.php";
 require_once "./View/PropertiesView.php";
 require_once "./Model/PropertiesModel.php";
-require_once "./Model/PropertiesTypesModel.php";
+require_once "./Model/propertiesTypesModel.php"; 
 
 // esto es una prueba para el git
 // esto es otra prueba mas!!
@@ -12,12 +12,13 @@ class PropertiesController{
     private $view;
     private $model;
     private $admin = 0;
+    /* private $typeModel; */
    
 
     function __construct(){
         $this->view = new PropertiesView();
         $this->model = new PropertiesModel();
-        $this->typeModel = new PropertiesTypesModel;
+        $this->typeModel = new propertiesTypesModel;
         $this->cont = new UserController();
     }
 

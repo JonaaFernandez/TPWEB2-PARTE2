@@ -32,7 +32,7 @@ class PropertiesModel{
         $sentencia = $this->db->prepare("SELECT * FROM propiedades WHERE id=?");
         $sentencia->execute([$id]);
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
-
+        
     }
      
       function DeleteProp($prop_id){
