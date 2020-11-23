@@ -1,58 +1,39 @@
 {include file="header.tpl"}
 <p> logueado???? {$log} </p>
-<div class="w-75 mx-auto">
+<div class="w-75 mx-auto  body-bgc">
     {if isset($user)}
         <h2 class="display-4 text-capitalize grey-color container"> Administrar </h2>
     {/if}
     {if !isset($user)}
         <h2 class="display-4 text-capitalize grey-color container">Propiedades en venta </h2>
     {/if}
-    <table class="font-size-tabla mt-4 ml-2 mt-2 tabla">
-        <th class="th-tipo text-center th-prop th-prop-largo"> TIPO DE PROPIEDAD </th>
-        <th class="th-nombre text-center th-prop th-prop-largo ">NOMBRE</th>
-        <th class="th-valor text-center th-prop th-prop-largo "> VALOR en U$S</th>
-
-      
-            <th class="th-valor text-center th-prop th-acciones "></th>
-            <th class="th-valor text-center th-prop th-acciones "> ACCIONES </th>
-            <th class="th-valor text-center th-prop th-acciones th-borde-right "></th>
-            <th class="th-valor text-center th-prop th-acciones th-borde-right "> COMENTARIOS </th>
-     
-
-
-        {foreach from=$propiedad item=tipoprop} {* propiedades *}
-            <tr>
-                <td class="td-prop text-center ">
-                    {foreach from=$tipo item=tipos} {* tipos de propiedad *}
-                        {if ($tipos->id == $tipoprop->tipo)}
-                            {$tipos->nombre}
-                        </td>
-                    {/if}
+ 
+    <div class=" body-bgc">
+        <ul class=" body-bgc ">
+            {foreach from=$propiedad item=tipoprop} {* propiedades *}    
+                <li class=" container body-bgc border">       
+                            ID: {$tipoprop->id}</br>
+                {foreach from=$tipo item=tipos} {* tipos de propiedad *}
+                            {if ($tipos->id == $tipoprop->tipo)}
+                            TIPO DE PROPIEDAD: {$tipos->nombre} <br>
+                            {/if}
                 {/foreach}
-    
-    
-                <td class="td-prop text-center">{$tipoprop->nombre}</td>
-                <td class="td-prop text-center"> U$S {$tipoprop->valor}</td>
-    
-                <div class="acciones">
-                    {* {if !isset($user)} *}
-                        <td class="p-0 border-btn "><a href="ver/{$tipoprop->id}" class="p-1 m-1 bg-dark ancho-ver "> VER </td>
-                        <td class="p-0 border-btn "><a href="modificar/{$tipoprop->id}" class="p-1 m-1 bg-dark ancho-modif"> MODIFICAR </td>
-                        <td class="p-0 th-borde-right border-btn"> <a href="eliminar/{$tipoprop->id}" class=" p-1 m-1 bg-dark ancho-ver"> ELIMINAR </td>
-                        <td class="p-0 th-borde-right border-btn"> <a href="coments/{$tipoprop->id}" class=" p-1 m-1 bg-dark ancho-ver"> COMENTARIOS </td>
-
-                  {*   {/if} *}
-             {*        {if isset($user)} *}
-{*                         <td class="p-0 border-btn  th-borde-right"> <a href="ver/{$tipoprop->id}" class="p-1 m-1 bg-dark ancho-ver "> VER </td>
- *}            {*         {/if} *}
+                NOMBRE: {$tipoprop->nombre} <br>
+                VALOR : U$S {$tipoprop->valor}</br>
+                <p class="body-bgc"> </p>
+                    
+                <div class="acciones body-bgc">
+                    <a href="ver/{$tipoprop->id}" class="p-1 m-1 bg-dark ancho-ver "> VER </a>
+                    <a href="modificar/{$tipoprop->id}" class="p-1 m-1 bg-dark ancho-modif"> MODIFICAR </a>
+                    <a href="eliminar/{$tipoprop->id}" class=" p-1 m-1 bg-dark ancho-ver"> ELIMINAR </a>
+                    <a href="coments/{$tipoprop->id}" class=" p-1 m-1 bg-dark ancho-comentario"> COMENTARIOS </a>
+                    <p></p>
                 </div>
-    
-            </tr>
-        {/foreach}
-
-    </table>
-    {* PARA USUARIOS Y ADMIN *}
-</div>
+            </li>     
+            {/foreach}
+        </ul>
+    </div>
+        
 <p></p>
 <div class="container">
     <div class="container">
@@ -70,7 +51,7 @@
         </form>
     </div>
     {* SOLO PARA ADMIN *}
-    {if !isset($user)}
+    {if isset($user)}
         <div class=" container mt-4 row">
             <p class=" gris-color h2 ml-1"> Dar de alta </p>
             <form action="alta" method="get">

@@ -112,9 +112,16 @@ class PropertiesController{
             die();
         }
         else{
+            if (isset($_FILES['input_img'])){
+                $uploads=getcwd() . '/uploads';  /// carpeta donde guardo las imagenes */
+                $destino=tempnam($uploads,$_FILES['input_img']['name']) ;  
+                move_uploaded_file($_FILES['input_img']['tmp_name'], $destino); 
+                $destino=basename($destino);
+               echo $destino;
+            }
         if ((isset($_POST['input_name'])) && (isset($_POST['input_value'])) && ($_POST['input_name']!= "")  && ($_POST['input_value'] !="" )) {
              $typeProp = $this->typeModel->GetAll();
-             $this->model->insertProp($_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_description'],$_POST['input_value'],$_POST['input_date']);
+             $this->model->insertProp($_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_description'],$_POST['input_value'],$_POST['input_date'],$destino);
              $this->view->showformNew($typeProp,$log);
         } else {
             $this->view->showerror($log,"Los datos ingresados son incorrectos");

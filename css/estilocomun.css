@@ -475,6 +475,17 @@ body {
         align-content: center;
         align-self: center;
     }
+    .table {
+        border-spacing: 40px;
+        min-width: 180px;
+        margin-left: 2px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: white;
+        align-content: center;
+        align-self: center;
+    }
     .td-prop {
         background-color: gray;
         text-align: left;
@@ -562,6 +573,10 @@ body {
     }
     .ancho-modif {
         width: 100px;
+    }
+
+    .ancho-comentario {
+        width: 150px;        
     }
     .tabla {
         width: 100%;

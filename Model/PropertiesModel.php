@@ -20,10 +20,10 @@ class PropertiesModel{
         $sentencia->execute([$type]);
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
-      function InsertProp($type,$name,$adress,$value,$description,$date){
+      function InsertProp($type,$name,$adress,$value,$description,$date,$imagen){
       
-          $sentencia = $this->db->prepare("INSERT INTO propiedades(tipo, nombre, direccion, descripcion, valor, fecha) VALUES(?,?,?,?,?,?)");
-          $sentencia->execute([$type,$name,$adress,$value,$description,$date]);
+          $sentencia = $this->db->prepare("INSERT INTO propiedades(tipo, nombre, direccion, descripcion, valor, fecha,imagen) VALUES(?,?,?,?,?,?,?)");
+          $sentencia->execute([$type,$name,$adress,$value,$description,$date,$imagen]);
       return;
 
       }

@@ -10,7 +10,7 @@
 </h1>
 
 <div class="container mt-4">
-    <form action="insert" method="post">
+    <form action="insert" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="title">Tipo de Propiedad: </label>
             <select name="input_type">
@@ -42,6 +42,10 @@
             <label for="description">Descripcion</label>
             <textarea name="input_description" id="description" class="form-control w-50" rows="3" cols="20">  </textarea>
         </div>
+        <div class="form-group">
+        <label for="title">Imagen </label>
+        <input type="file" class="form-control w-75 ml-4" name="input_img" >
+       
         <button type="submit" class="btn btn-primary bg-dark">Agregar</button>
     </form>
 </div>

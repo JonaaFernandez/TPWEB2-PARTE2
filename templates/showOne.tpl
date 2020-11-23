@@ -39,6 +39,11 @@
         <label for="title" type="date" class="form-control w-25" id="input_date" name="input_date" value="'.$prop[0]->fecha.'">{$propiedad[0]->fecha} </label>
         <label class="form-check-label" for=" "></label>
     </div>
+    <div class="form-group">
+     {if $propiedad[0]->imagen}
+        <img src='uploads/'{$propiedad[0]->imagen}>
+   {/if}
+</div>
  
    <a href="ventas" type="button" class="btn btn-primary  ml-0 bg-dark" value="volver" > VOLVER </a>
 </div>
