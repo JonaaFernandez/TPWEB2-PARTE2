@@ -1,5 +1,5 @@
 {include file="header.tpl"}
-<p> logueado???? {$log} </p>
+<p> logueado???? essta o no?  {$log} </p>
 <div class="container body-bgc">
     {if isset($user)}
         <h2 class="display-4 text-capitalize grey-color container"> Administrar </h2>
@@ -14,7 +14,7 @@
                 {foreach from=$propiedad item=tipoprop} {* propiedades *}
                     {* <li class="col-lg-12  p-2 container body-bgc rounded mb-4">
                         *}
-                        <div class="body-bgc col-lg-12  border border-dark mt-2 mb-2 d-flex justify-content-between">
+                        <div class="body-bgc col-lg-12  border-groove mt-2 mb-2 d-flex justify-content-between">
                             <div class="">
                     <li class="list-group"> ID: {$tipoprop->id}</li>
                     {foreach from=$tipo item=tipos} {* tipos de propiedad *}

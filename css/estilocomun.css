@@ -610,4 +610,7 @@ body {
     .fontNegra {
         color: black;
     }
+    .border-groove {
+        border: groove darkgrey 10px;
+    }
 }
