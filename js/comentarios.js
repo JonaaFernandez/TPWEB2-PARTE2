@@ -27,12 +27,23 @@ function ShowComentario(comentarios) {
         removeComentarios();
         limpiarTabla();
         for (let coment of comentarios) {
+
             let boton = document.createElement("button");
-            boton.innerText = "borrar";
+            boton.innerText = "BORRAR";
             let nodoTr = document.createElement("tr");
             let nodoTd1 = document.createElement("td");
             let nodoTd2 = document.createElement("td");
             let nodoTd3 = document.createElement("td");
+            /* Agregamos estilos para que la tabla de comentarios se vea prolija. */
+            nodoTd1.classList.add("border-btn");
+            nodoTd2.classList.add("border-btn");
+            nodoTd3.classList.add("border-btn");
+            nodoTd1.classList.add("th-borde-right", "fontNegra", "font-weight-bold", "text-left", "pl-2");
+            nodoTd2.classList.add("th-borde-right", "font-negra", "font-weight-bold");
+            nodoTd3.classList.add("th-borde-right", "font-negra", "font-weight-bold");
+            boton.classList.add("ancho-modif", "bg-dark", "text-center", "text-primary");
+
+
             nodoTd1.innerHTML = `${coment.comentario}`;
             nodoTd2.innerHTML = `${coment.puntaje}`;
             nodoTr.id = coment.id;
@@ -42,6 +53,7 @@ function ShowComentario(comentarios) {
                 nodoTr.appendChild(nodoTd2);
                 nodoTd3.appendChild(boton);
                 nodoTr.appendChild(nodoTd3);
+
             } else {
                 nodoTr.appendChild(nodoTd1);
                 nodoTr.appendChild(nodoTd2);

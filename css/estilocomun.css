@@ -265,6 +265,10 @@ body {
     background-color: teal;
 }
 
+.font-negra {
+    color: black;
+}
+
 
 /*------------------------------------------------------------------------------------------------------*/
 
@@ -277,6 +281,9 @@ body {
 @media only screen and (min-width: 660px) {
     /* TABLET */
     /*INDEX*/
+    .font-negra {
+        color: black;
+    }
     .body-bgc {
         background-color: teal;
     }
@@ -574,9 +581,8 @@ body {
     .ancho-modif {
         width: 100px;
     }
-
     .ancho-comentario {
-        width: 150px;        
+        width: 150px;
     }
     .tabla {
         width: 100%;
@@ -600,5 +606,8 @@ body {
     }
     .ocultar {
         display: none;
+    }
+    .fontNegra {
+        color: black;
     }
 }
