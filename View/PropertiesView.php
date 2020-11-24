@@ -31,20 +31,18 @@ class PropertiesView{
     }
 
     function ShowAlquileres($log){
-        $smarty = new Smarty();  
-        $smarty->assign('log', $log);
-        $smarty->assign('title', $this->title); 
-        $smarty->display('templates/alquileres.tpl');   
+        $this->smarty->assign('log', $log);
+        $this->smarty->assign('title', $this->title); 
+        $this->smarty->display('templates/alquileres.tpl');   
    
     }
 
     
     
     function ShowContacto($log){
-        $smarty = new Smarty();  
-        $smarty->assign('log', $log); 
-        $smarty->assign('title', $this->title); 
-        $smarty->display('templates/contacto.tpl'); 
+        $this->smarty->assign('log', $log); 
+        $this->smarty->assign('title', $this->title); 
+        $this->smarty->display('templates/contacto.tpl'); 
     }
 
     
@@ -95,11 +93,11 @@ function showAll($prop,$typeProp,$log){   //VENTASs
    
     function ShowError($log, $mensaje = ""){
 
-        $smarty = new Smarty();
-        $smarty->assign('title', $this->title);
-        $smarty->assign('mensaje', $mensaje);  
-        $smarty->assign('log', $log);
-        $smarty->display('templates/error.tpl'); 
+      
+        $this->smarty->assign('title', $this->title);
+        $this->smarty->assign('mensaje', $mensaje);  
+        $this->smarty->assign('log', $log);
+        $this->smarty->display('templates/error.tpl'); 
     
     }
 

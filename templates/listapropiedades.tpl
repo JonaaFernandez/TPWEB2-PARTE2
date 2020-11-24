@@ -1,5 +1,4 @@
 {include file="header.tpl"}
-<p> logueado???? essta o no?  {$log} </p>
 <div class="container body-bgc">
     {if isset($user)}
         <h2 class="display-4 text-capitalize grey-color container"> Administrar </h2>

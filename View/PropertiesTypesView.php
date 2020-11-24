@@ -16,7 +16,11 @@ class PropertiesTypesView{
         }         
         if(isset($_SESSION['USERNAME'])){
             $this->smarty->assign('user', $_SESSION['USERNAME']);
-        }
+        } 
+        else if (isset($_SESSION['registrado'])){
+            $this->smarty->assign('registrado', $_SESSION['registrado']); 
+
+       }
     } 
  
     
@@ -25,11 +29,10 @@ class PropertiesTypesView{
 
 function showAllTypes($type,$log){   // muestra todos los tipos de propiedad
     $tipo=$type;
-    $smarty = new Smarty();  
-    $smarty->assign('title', $this->title); 
-    $smarty->assign('tipito', $tipo);
-    $smarty->assign('log', $log);
-    $smarty->display('templates/listaTipos.tpl');
+    $this->smarty->assign('title', $this->title); 
+    $this->smarty->assign('tipito', $tipo);
+    $this->smarty->assign('log', $log);
+    $this->smarty->display('templates/listaTipos.tpl');
 
     }
 

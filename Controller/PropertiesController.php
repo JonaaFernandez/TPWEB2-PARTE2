@@ -62,7 +62,6 @@ class PropertiesController{
 
     function Alquileres(){
     $log = $this->cont->checklogueado();
-    echo 'checcklogueado =' . $log;
     $this->view->ShowAlquileres($log);
     }
 

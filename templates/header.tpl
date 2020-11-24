@@ -43,26 +43,7 @@
                              {else}
                              <li class="nav-item "><a href="login" class="nav-link ">Iniciar sesion</a></li>  
                              {/if}
-                             
-                             
-                             
-
-
-
-                             {* {if isset($user)}
-                             <li class="nav-item "><a href="ventas" class="nav-link ">Administrar Propiedades</a></li>
-                             <li class="nav-item "><a href="verTodosLosTipos" class="nav-link ">Tipos de Propiedad</a></li>
-                             <li class="nav-item "><a href="ventas" class="nav-link ">Ventas</a></li>
-                             <li class="nav-item "><a href="alquileres" class="nav-link ">Alquileres</a></li>
-                             <li class="nav-item "><a href="contacto" class="nav-link ">Contacto</a></li>
-                             <li class="nav-item "><a href="logout" class="nav-link ">Cerrar sesion</a></li>
-                             {/if}
-                             {if !isset($user)}
-                             <li class="nav-item "><a href="ventas" class="nav-link ">Ventas</a></li>
-                             <li class="nav-item "><a href="alquileres" class="nav-link ">Alquileres</a></li>
-                             <li class="nav-item "><a href="contacto" class="nav-link ">Contacto</a></li>
-                             <li class="nav-item "><a href="login" class="nav-link ">Iniciar sesion</a></li>
-                             {/if} *}
+   
                          </ul>
                      </div>
                  </div>
