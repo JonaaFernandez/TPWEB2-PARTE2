@@ -18,8 +18,7 @@ class ApiCommentController extends ApiController{
     public function ShowAllByProp($params = null){
         $propiedad = $params[':ID'];
         $comentarios = $this->model->GetCommentByProp($propiedad);
-        
-            $this->view->response($comentarios,200);  // devuelve en formato de json
+        $this->view->response($comentarios,200);  // devuelve en formato de json
         }
 
 

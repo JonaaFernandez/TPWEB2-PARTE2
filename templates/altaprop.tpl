@@ -44,7 +44,7 @@
         </div>
         <div class="form-group">
         <label for="title">Imagen </label>
-        <input type="file" class="form-control w-75 ml-4" name="input_img" >
+        <input type="file" class="form-control w-75 ml-4" name="img" >
        
         <button type="submit" class="btn btn-primary bg-dark">Agregar</button>
     </form>

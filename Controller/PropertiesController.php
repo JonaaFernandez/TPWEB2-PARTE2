@@ -113,10 +113,10 @@ class PropertiesController{
             die();
         }
         else{
-            if (isset($_FILES['input_img'])){
+            if (isset($_FILES['img'])){
                 $uploads=getcwd() . '/uploads';  /// carpeta donde guardo las imagenes */
-                $destino=tempnam($uploads,$_FILES['input_img']['name']) ;  
-                move_uploaded_file($_FILES['input_img']['tmp_name'], $destino); 
+                $destino=tempnam($uploads,$_FILES['img']['name']) ;  
+                move_uploaded_file($_FILES['img']['tmp_name'], $destino); 
                 $destino=basename($destino);
                echo $destino;
             }
