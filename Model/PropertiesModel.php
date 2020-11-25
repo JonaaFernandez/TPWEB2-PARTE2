@@ -14,6 +14,14 @@ class PropertiesModel{
           return $sentencia->fetchAll(PDO::FETCH_OBJ);
       }
    
+    
+      function searchProp($search){
+        $sentencia = $this->db->prepare("SELECT * FROM propiedades WHERE (id LIKE '%$search%') 
+        OR (tipo LIKE '%$search%') OR (nombre LIKE '%$search%') OR (descripcion LIKE '%$search%')
+        OR (direccion LIKE'%$search%') OR (fecha LIKE'%$search%') OR (valor LIKE'%$search%')");
+        $sentencia->execute();
+        return $sentencia->fetchAll(PDO::FETCH_OBJ);
+    }
 
       function GetByType($type){
         $sentencia = $this->db->prepare("SELECT * FROM propiedades WHERE tipo=? order by valor");

@@ -45,6 +45,7 @@
 // elimina un elemento de la tabla 
     $r->addRoute("eliminar/:ID", "GET", "PropertiesController", "delProp");
     $r->addRoute("mostrarPorTipo", "POST", "PropertiesController", "showByType");
+    $r->addRoute("busquedaAvanzada", "POST", "PropertiesController", "busquedaAvanzada");
 
 //Comentarios
      $r->addRoute("coments/:ID", "GET", "PropertiesController", "GetComentarios");

@@ -195,11 +195,29 @@ class PropertiesController{
         $coment = $params[':ID']; 
         $data =  $this->model->getProp($coment);
         $this->view->ComentariosPropiedades($log,$data);
-        
-
-
-
    }
+
+   function busquedaAvanzada(){
+    $log = $this->cont->checklogueado();
+    if ($log==0){
+      header("Location: " . LOGIN);
+      die();
+    }
+    else{
+        if ((isset($_POST['input_search'])) && ($_POST['input_search']!= "")) {
+            $prop = $this->model->searchProp($_POST['input_search']);
+      /*       $this->view->ShowListLocation(); */
+            $typeProp = $this->typeModel->GetAll();
+             $this->view->ShowAll($prop,$typeProp,$log);
+        }
+        else {
+        $this->view->showError($log,"Los datos ingresados son incorrectos");
+    }
+    }
+}
+
+
+   
 }
 
 ?>

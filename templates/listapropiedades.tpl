@@ -53,7 +53,7 @@
     <div class="container">
         <form action="mostrarPorTipo" method="POST">
             <div class="form-group mr-5">
-                <label for="title" class="offset-1 ">Seleccione el tipo de Propiedad </label>
+                <label for="title" class="offset-1 ">Buscar por tipo de Propiedad </label>
                 <select name="input_type" id="">
                     {foreach from=$tipo item=tp}
                         <option value="{$tp->id}"> {$tp->nombre} </option>
@@ -62,8 +62,18 @@
                 <button type="submit" class="ml-3 btn btn-primary bg-dark">Seleccionar</button>
 
             </div>
-        </form>
+        </form> 
+        <p></p>
+        <form action="busquedaAvanzada" method="POST">
+        <div class="form-group mr-5">
+        <p class=" gris-color h2 ml-1"> Busqueda Avanzada </p>
+            <input type="text" class="form-control" id="input_searh" name="input_search" placeholder="Ingrese palabras claves">
+            <button type="submit" class="ml-3 btn btn-primary bg-dark">Buscar</button>
+
+        </div>
+    </form> 
     </div>
+    <p></p>
     {* SOLO PARA ADMIN *}
     {if isset($user)}
         <div class=" container mt-4 row">
