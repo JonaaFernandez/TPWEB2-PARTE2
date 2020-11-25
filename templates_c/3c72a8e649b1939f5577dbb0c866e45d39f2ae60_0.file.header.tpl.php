@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-11-23 19:00:00
+/* Smarty version 3.1.34-dev-7, created on 2020-11-25 05:16:27
   from 'C:\xampp\htdocs\TPweb2parte2\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5fbbf8a0826838_42878268',
+  'unifunc' => 'content_5fbdda9b676ac1_52803652',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3c72a8e649b1939f5577dbb0c866e45d39f2ae60' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPweb2parte2\\templates\\header.tpl',
-      1 => 1606154399,
+      1 => 1606254871,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5fbbf8a0826838_42878268 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5fbdda9b676ac1_52803652 (Smarty_Internal_Template $_smarty_tpl) {
 ?> <!DOCTYPE html>
  <html lang="en">
 
@@ -70,13 +70,8 @@ function content_5fbbf8a0826838_42878268 (Smarty_Internal_Template $_smarty_tpl)
                              <?php } else { ?>
                              <li class="nav-item "><a href="login" class="nav-link ">Iniciar sesion</a></li>  
                              <?php }?>
-                             
-                             
-                             
-
-
-
-                                                      </ul>
+   
+                         </ul>
                      </div>
                  </div>
 
