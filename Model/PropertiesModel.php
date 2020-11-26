@@ -29,9 +29,9 @@ class PropertiesModel{
         $sentencia->execute([$type]);
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
-    function GetPagesbyType($type,$nroPag,$PropPorPagina){
-      $sentencia = $this->db->prepare("SELECT * FROM propiedades WHERE tipo=? LIMIT $nroPag , $PropPorPagina");
-      $sentencia->execute($type);
+    function GetPagesbyType2($type){
+      $sentencia = $this->db->prepare("SELECT * FROM propiedades WHERE tipo=?");
+      $sentencia->execute([$type]);
       return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
     

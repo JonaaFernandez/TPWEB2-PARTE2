@@ -153,17 +153,32 @@ class PropertiesController{
 
    
 /* no funciona */
-    function  showByType($id = null , $params = null){
+    /* function  showByType($params = null){
         $nroPag = $params[':ID'];
-        /*$id = ($_POST['input_type']);*/ 
-        $PropPorPagina = 3; // cantidad de propiedades por pagina.
+        $tipoprop = $params[':TIPO'];
+         $id = ($_POST['input_type']); 
+        $PropPorPagina = 3;  cantidad de propiedades por pagina.
         $filaInicial= (($nroPag-1) * $PropPorPagina);
         $nroItems = $this->model->ContarItems();
         $prop = $this->model->GetbyType($id,$nroPag,$PropPorPagina);
         $typeProp = $this->typeModel->GetAll();
         $log = $this->cont->checklogueado();;
          $this->view->ShowAll($prop,$typeProp,$log,$nroPag,$nroItems,$PropPorPagina);
-    }
+    } */
+     function  showByType2(){
+        $id = ($_POST['input_type']);
+        $prop = $this->model->GetPagesbyType2($id);
+        $typeProp = $this->typeModel->GetAll();
+        $log = $this->cont->checklogueado();; 
+        $this->view->showAll2($prop,$typeProp,$log); 
+    } 
+
+   /*  function  showByType2(){
+        $id = ($_POST['input_type']);
+        $prop = $this->model->GetByType($id);
+        $typeProp = $this->typeModel->GetAll();
+        $this->view->ShowAll($prop,$typeProp,$this->admin); 
+    } */
   
   
     function delProp($params = null){
