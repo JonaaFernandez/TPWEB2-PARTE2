@@ -24,11 +24,17 @@ class PropertiesModel{
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
 
-      function GetByType($type,$nroPag,$PropPorPagina){
+    function GetByType($type,$nroPag,$PropPorPagina){
         $sentencia = $this->db->prepare("SELECT * FROM propiedades WHERE tipo=?  LIMIT $nroPag , $PropPorPagina order by valor");
         $sentencia->execute([$type]);
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
+    function GetPagesbyType($type,$nroPag,$PropPorPagina){
+      $sentencia = $this->db->prepare("SELECT * FROM propiedades WHERE tipo=? LIMIT $nroPag , $PropPorPagina");
+      $sentencia->execute($type);
+      return $sentencia->fetchAll(PDO::FETCH_OBJ);
+    }
+    
       function InsertProp($type,$name,$adress,$value,$description,$date,$imagen){
       
           $sentencia = $this->db->prepare("INSERT INTO propiedades(tipo, nombre, direccion, descripcion, valor, fecha,imagen) VALUES(?,?,?,?,?,?,?)");
@@ -69,11 +75,7 @@ class PropertiesModel{
         return $sentencia->rowCount();
 
       }
-      function GetPagesbyType($type,$nroPag,$PropPorPagina){
-        $sentencia = $this->db->prepare("SELECT * FROM propiedades WHERE tipo=? LIMIT $nroPag , $PropPorPagina");
-        $sentencia->execute($type);
-        return $sentencia->fetchAll(PDO::FETCH_OBJ);
-      }
+     
 }
 
 ?>

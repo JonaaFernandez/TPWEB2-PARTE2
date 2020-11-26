@@ -165,6 +165,7 @@ class PropertiesController{
          $this->view->ShowAll($prop,$typeProp,$log,$nroPag,$nroItems,$PropPorPagina);
     }
   
+  
     function delProp($params = null){
         $log = $this->cont->checklogueado();
         if (!$log){

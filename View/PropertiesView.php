@@ -60,6 +60,16 @@ function showAll($prop,$typeProp,$log,$nroPag,$nroItems,$PropPorPagina){   //VEN
     $this->smarty->display('templates/listapropiedades.tpl');                
     }
 
+    function showAll2($prop,$typeProp,$log){   //VENTASs
+        $this->smarty->assign('title', $this->title); 
+        $this->smarty->assign('propiedad', $prop); 
+        $this->smarty->assign('tipo', $typeProp);
+        $this->smarty->assign('log', $log);
+        $this->smarty->display('templates/listapropiedades.tpl');                
+        }
+
+
+
      
     
 
