@@ -165,12 +165,12 @@ class PropertiesController{
         $log = $this->cont->checklogueado();;
          $this->view->ShowAll($prop,$typeProp,$log,$nroPag,$nroItems,$PropPorPagina);
     } */
-     function  showByType2(){
+     function  searchByType(){
         $id = ($_POST['input_type']);
         $prop = $this->model->GetPagesbyType2($id);
         $typeProp = $this->typeModel->GetAll();
         $log = $this->cont->checklogueado();; 
-        $this->view->showAll2($prop,$typeProp,$log); 
+        $this->view->ShowTypesProp($prop,$typeProp,$log); 
     } 
 
    /*  function  showByType2(){
