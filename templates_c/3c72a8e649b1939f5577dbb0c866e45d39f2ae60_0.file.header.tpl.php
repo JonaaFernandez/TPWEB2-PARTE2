@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-11-25 05:16:27
+/* Smarty version 3.1.34-dev-7, created on 2020-11-26 02:15:00
   from 'C:\xampp\htdocs\TPweb2parte2\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5fbdda9b676ac1_52803652',
+  'unifunc' => 'content_5fbf019427dbb5_75248810',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3c72a8e649b1939f5577dbb0c866e45d39f2ae60' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPweb2parte2\\templates\\header.tpl',
-      1 => 1606254871,
+      1 => 1606353297,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5fbdda9b676ac1_52803652 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5fbf019427dbb5_75248810 (Smarty_Internal_Template $_smarty_tpl) {
 ?> <!DOCTYPE html>
  <html lang="en">
 
@@ -59,7 +59,7 @@ function content_5fbdda9b676ac1_52803652 (Smarty_Internal_Template $_smarty_tpl)
                      <div id="navbarSupportedContent" class="collapse navbar-collapse">
                          <ul class="navbar-nav ml-auto">
                              <li class="nav-item "><a href="home" class="nav-link ">Home<span></a></li>
-                             <li class="nav-item "><a href="ventas" class="nav-link ">Ventas</a></li>
+                             <li class="nav-item "><a href="mostrarpagina/1" class="nav-link ">Ventas</a></li>
                              <li class="nav-item "><a href="alquileres" class="nav-link ">Alquileres</a></li>
                              <li class="nav-item "><a href="contacto" class="nav-link ">Contacto</a></li>
                              <li class="nav-item "><a href="verTodosLosTipos" class="nav-link ">Tipos de Propiedad</a></li>

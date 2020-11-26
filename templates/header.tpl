@@ -32,7 +32,7 @@
                      <div id="navbarSupportedContent" class="collapse navbar-collapse">
                          <ul class="navbar-nav ml-auto">
                              <li class="nav-item "><a href="home" class="nav-link ">Home<span></a></li>
-                             <li class="nav-item "><a href="ventas" class="nav-link ">Ventas</a></li>
+                             <li class="nav-item "><a href="mostrarpagina/1" class="nav-link ">Ventas</a></li>
                              <li class="nav-item "><a href="alquileres" class="nav-link ">Alquileres</a></li>
                              <li class="nav-item "><a href="contacto" class="nav-link ">Contacto</a></li>
                              <li class="nav-item "><a href="verTodosLosTipos" class="nav-link ">Tipos de Propiedad</a></li>

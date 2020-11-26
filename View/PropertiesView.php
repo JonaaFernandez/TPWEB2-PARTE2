@@ -49,11 +49,14 @@ class PropertiesView{
 
 
 
-function showAll($prop,$typeProp,$log){   //VENTASs
+function showAll($prop,$typeProp,$log,$nroPag,$nroItems,$PropPorPagina){   //VENTASs
     $this->smarty->assign('title', $this->title); 
     $this->smarty->assign('propiedad', $prop); 
     $this->smarty->assign('tipo', $typeProp);
     $this->smarty->assign('log', $log);
+    $this->smarty->assign('pagina', $nroPag);
+    $this->smarty->assign('items', $nroItems);
+    $this->smarty->assign('propPorPagina', $PropPorPagina);
     $this->smarty->display('templates/listapropiedades.tpl');                
     }
 

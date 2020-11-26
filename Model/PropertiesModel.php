@@ -12,6 +12,7 @@ class PropertiesModel{
           $sentencia = $this->db->prepare("SELECT * FROM propiedades order by tipo");
           $sentencia->execute();
           return $sentencia->fetchAll(PDO::FETCH_OBJ);
+
       }
    
     
@@ -23,8 +24,8 @@ class PropertiesModel{
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
 
-      function GetByType($type){
-        $sentencia = $this->db->prepare("SELECT * FROM propiedades WHERE tipo=? order by valor");
+      function GetByType($type,$nroPag,$PropPorPagina){
+        $sentencia = $this->db->prepare("SELECT * FROM propiedades WHERE tipo=?  LIMIT $nroPag , $PropPorPagina order by valor");
         $sentencia->execute([$type]);
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
@@ -57,7 +58,22 @@ class PropertiesModel{
       return;
     }
      
-      
+    function GetPages($nroPag,$PropPorPagina){
+      $sentencia = $this->db->prepare("SELECT * FROM propiedades LIMIT $nroPag , $PropPorPagina");
+      $sentencia->execute();
+      return $sentencia->fetchAll(PDO::FETCH_OBJ);
+    }
+      function ContarItems(){
+        $sentencia = $this->db->prepare("SELECT * FROM propiedades order by tipo");
+        $sentencia->execute();
+        return $sentencia->rowCount();
+
+      }
+      function GetPagesbyType($type,$nroPag,$PropPorPagina){
+        $sentencia = $this->db->prepare("SELECT * FROM propiedades WHERE tipo=? LIMIT $nroPag , $PropPorPagina");
+        $sentencia->execute($type);
+        return $sentencia->fetchAll(PDO::FETCH_OBJ);
+      }
 }
 
 ?>

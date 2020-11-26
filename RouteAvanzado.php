@@ -31,8 +31,11 @@
     // >recibe datos del Form  para dar de alta una propiedad
     $r->addRoute("insert", "POST", "PropertiesController", "insertProp");
   
-// Mostrar todos
-    $r->addRoute("ventas", "GET", "PropertiesController", "showAllProp");
+// Mostrar de a 3
+    $r->addRoute("mostrarpagina/:ID", "GET", "PropertiesController", "showAllProp");
+
+
+
  // Acá podría tener un formulario de inserción
 
   // Mostrar uno
@@ -44,7 +47,7 @@
     $r->addRoute("editar", "POST", "PropertiesController", "editProp");
 // elimina un elemento de la tabla 
     $r->addRoute("eliminar/:ID", "GET", "PropertiesController", "delProp");
-    $r->addRoute("mostrarPorTipo", "POST", "PropertiesController", "showByType");
+    $r->addRoute("mostrarPorTipo", "GET", "PropertiesController", "showByType");
     $r->addRoute("busquedaAvanzada", "POST", "PropertiesController", "busquedaAvanzada");
 
 //Comentarios

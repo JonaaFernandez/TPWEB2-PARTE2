@@ -12,6 +12,7 @@ class PropertiesController{
     private $view;
     private $model;
     private $admin = 0;
+    
     /* private $typeModel; */
    
 
@@ -22,38 +23,7 @@ class PropertiesController{
         $this->cont = new UserController();
     }
 
-  /* public function checklogueado(){ // CHEQUEA EL ESTADO DE LA SESION Y SU ULTIMA ACIVIDAD
-
-        if (!isset($_SESSION['USERNAME'])){
-            
-        header("Location: " . LOGIN);
-        die();
-        }else{
-            if ( isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 300)) { 
-        
-                $this->cont->LogOut();
-
-            }
-            $_SESSION['LAST_ACTIVITY'] = time();
-        } 
-    }  */
-
-   /*  public function checklogueado(){ // CHEQUEA EL ESTADO DE LA SESION Y SU ULTIMA ACIVIDAD
-
-        if (!isset($_SESSION['USERNAME'])){
-
-            return 0;
-        }else{
-            if ( isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 300)) { 
-        
-                $this->cont->LogOut();
-
-            }
-            $_SESSION['LAST_ACTIVITY'] = time();
-            return 1;
-        } 
-    }
- */
+ 
 
     function Home(){
      $log = $this->cont->checklogueado();
@@ -71,12 +41,24 @@ class PropertiesController{
      $this->view->ShowContacto($log);
     }
 
-    function showAllProp(){ /* Muestra "ventas, dependiendo si estoy como admin o usuario */
+   /*  function showAllProp(){   Muestra "ventas, dependiendo si estoy como admin o usuario" 
      $prop = $this->model->GetAllProp();
      $typeProp = $this->typeModel->GetAll();
      $log = $this->cont->checklogueado();
-    $this->view->ShowAll($prop,$typeProp,$log);
-    }
+     $this->view->ShowAll($prop,$typeProp,$log);
+    }  */
+    
+    function showAllProp($params = null){ 
+        $nroPag = $params[':ID'];
+        $PropPorPagina = 3; // cantidad de propiedades por pagina.
+        $filaInicial= (($nroPag-1) * $PropPorPagina);
+        $prop = $this->model->GetPages($filaInicial,$PropPorPagina);
+        $nroItems = $this->model->ContarItems();
+        $typeProp = $this->typeModel->GetAll();
+        $log = $this->cont->checklogueado();
+        $this->view->ShowAll($prop,$typeProp,$log,$nroPag,$nroItems,$PropPorPagina);
+       } 
+
 
     
     function cargaProp($params = null){
@@ -164,19 +146,23 @@ class PropertiesController{
         $oneProp= $this->model->getProp($prop_id);
         $id=$oneProp[0]->tipo;
         $typeProp = $this->typeModel->GetType($id);
-         $type=$typeProp[0]->nombre; 
-         $log = $this->cont->checklogueado();
+        $type=$typeProp[0]->nombre; 
+        $log = $this->cont->checklogueado();
        $this->view->ShowOne($oneProp,$type,$log); 
     }
 
    
-
-    function  showByType(){
-        $id = ($_POST['input_type']);
-        $prop = $this->model->GetByType($id);
+/* no funciona */
+    function  showByType($id = null , $params = null){
+        $nroPag = $params[':ID'];
+        /*$id = ($_POST['input_type']);*/ 
+        $PropPorPagina = 3; // cantidad de propiedades por pagina.
+        $filaInicial= (($nroPag-1) * $PropPorPagina);
+        $nroItems = $this->model->ContarItems();
+        $prop = $this->model->GetbyType($id,$nroPag,$PropPorPagina);
         $typeProp = $this->typeModel->GetAll();
         $log = $this->cont->checklogueado();;
-        $this->view->ShowAll($prop,$typeProp,$log); 
+         $this->view->ShowAll($prop,$typeProp,$log,$nroPag,$nroItems,$PropPorPagina);
     }
   
     function delProp($params = null){
@@ -196,7 +182,7 @@ class PropertiesController{
         $data =  $this->model->getProp($coment);
         $this->view->ComentariosPropiedades($log,$data);
    }
-
+/* no funciona */
    function busquedaAvanzada(){
     $log = $this->cont->checklogueado();
     if ($log==0){
@@ -208,7 +194,7 @@ class PropertiesController{
             $prop = $this->model->searchProp($_POST['input_search']);
       /*       $this->view->ShowListLocation(); */
             $typeProp = $this->typeModel->GetAll();
-             $this->view->ShowAll($prop,$typeProp,$log);
+              /* $this->view->ShowAll($prop,$typeProp,$log);  */
         }
         else {
         $this->view->showError($log,"Los datos ingresados son incorrectos");
