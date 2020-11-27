@@ -91,22 +91,20 @@
 <nav aria-label="..." class="d-flex justify-content-center">
     <ul class="pagination">
         <li class="page-item">
-            <a class="page-link" {if $pagina> 1} href= 'mostrarpagina/{$pagina-1}' {else} href= 'mostrarpagina/1' {/if} tabindex="-1">Anterior</a>
+            <a class="page-link" {if $pagina> 1} page=1 href= 'mostrarpagina/{$pagina-1}' {else} href= 'mostrarpagina/1' {/if} tabindex="-1">Anterior</a>
         </li>
 
         {for $i=1 to ($items/$propPorPagina)}
-            <li class="page-item  "><a class="page-link" href='mostrarpagina/{$i}'>{$i} <span class="sr-only">(current)</span></a></li>
+            {if $pagina == $i}
+                <li class="page-item active"><a class="page-link" href='mostrarpagina/{$i}'>{$i} <span class="sr-only">(current)</span></a></li>
+            {else}
+                <li class="page-item"><a class="page-link" href='mostrarpagina/{$i}'>{$i} <span class="sr-only">(current)</span></a></li>
+            {/if}
         {/for}
 
         <li class="page-item">
             <a class="page-link" {if $pagina==(($items/$propPorPagina) +1)|string_format:"%d"} href='mostrarpagina/{$pagina}' {else} href='mostrarpagina/{$pagina+1}' {/if}>Siguiente</a>
         </li>
-
-        {* POSIBLES SOLUCIONES PARA LIINKS ACTIVOS *}
-        {* if($_GET['page']==$i){ class='active'} *}
-        {* {if $pagina !='1'} 'class'= 'active' {/if} *}
-
-
     </ul>
 </nav>
 </div>
