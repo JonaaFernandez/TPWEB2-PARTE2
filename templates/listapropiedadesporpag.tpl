@@ -51,7 +51,7 @@
 <p></p>
 <div class="container">
     <div class="container">
-        <form action="mostrarPorTipo" method="POST">
+        <form action="mostrarPorTipo" method="GET">
             <div class="form-group ">
                 <label for="title" class="offset-1 h2">Buscar por tipo de Propiedad </label>
                 <select name="input_type" id="">
@@ -64,15 +64,14 @@
             </div>
         </form>
         <p></p>
-       <form action="busquedaAvanzada" method="POST">
+        <form action="busquedaAvanzada" method="POST">
             <div class="form-group mr-5">
                 <p class=" gris-color h2 ml-1"> Busqueda Avanzada </p>
                 <input type="text" class="form-control" id="input_searh" name="input_search" placeholder="Ingrese palabras claves">
                 <button type="submit" class="ml-3 btn btn-primary bg-dark">Buscar</button>
 
             </div>
-        </form> 
-    
+        </form>
     </div>
     <p></p>
     {* SOLO PARA ADMIN *}
@@ -91,15 +90,15 @@
 <nav aria-label="..." class="d-flex justify-content-center">
     <ul class="pagination">
         <li class="page-item">
-<a class="page-link" {if $pagina > 1} href= 'buscarportipo/{$id}/{$pagina-1}' {else} href= 'buscarportipo/{$id}/1' {/if} tabindex="-1">Anterior</a>
+<a class="page-link" {if $pagina > 1} href= 'mostrarpagina/{$pagina-1}' {else} href= 'mostrarpagina/1' {/if} tabindex="-1">Anterior</a>
         </li>
 
         {for $i=1 to ($items/$propPorPagina)}
-            <li class="page-item"><a class="page-link" href='buscarportipo/{$id}/{$i}'>{$i}</a></li>
+            <li class="page-item"><a class="page-link" href='mostrarpagina/{$i}'>{$i}</a></li>
         {/for}
 
         <li class="page-item">
-            <a class="page-link" {if $pagina == (($items/$propPorPagina) +1)|string_format:"%d"} href='buscarportipo/{$id}/{$pagina}' {else} href= 'buscarportipo/{$id}/{$pagina+1}' {/if}>Siguiente</a>
+            <a class="page-link" {if $pagina == (($items/$propPorPagina) +1)|string_format:"%d"} href='mostrarpagina/{$pagina}' {else} href= 'mostrarpagina/{$pagina+1}' {/if}>Siguiente</a>
         </li>
     </ul>
 </nav>

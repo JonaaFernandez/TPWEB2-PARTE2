@@ -33,7 +33,7 @@
   
 // Mostrar de a 3
     $r->addRoute("mostrarpagina/:ID", "GET", "PropertiesController", "showAllProp");
-
+    $r->addRoute("mostrarBusqueda/:PATRON/:PAG", "GET", "PropertiesController", "busquedaAvanzada");
 
 
  // Acá podría tener un formulario de inserción
@@ -47,9 +47,9 @@
     $r->addRoute("editar", "POST", "PropertiesController", "editProp");
 // elimina un elemento de la tabla 
     $r->addRoute("eliminar/:ID", "GET", "PropertiesController", "delProp");
-    $r->addRoute("mostrarPorTipo", "POST", "PropertiesController", "searchByType");
-    $r->addRoute("buscarportipo", "POST", "PropertiesController", "searchByType");
-    $r->addRoute("busquedaAvanzada", "POST", "PropertiesController", "busquedaAvanzada");
+    $r->addRoute("mostrarPorTipo", "POST", "PropertiesController", "searchByTypeInic");
+    $r->addRoute("buscarportipo/:ID/:PAG", "GET", "PropertiesController", "searchByType");
+    $r->addRoute("busquedaAvanzada", "POST", "PropertiesController", "busquedaAvanzadaInic");
 
 //Comentarios
      $r->addRoute("coments/:ID", "GET", "PropertiesController", "GetComentarios");

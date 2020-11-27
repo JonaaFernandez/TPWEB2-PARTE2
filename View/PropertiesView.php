@@ -60,17 +60,20 @@ function showAll($prop,$typeProp,$log,$nroPag,$nroItems,$PropPorPagina){   //VEN
     $this->smarty->display('templates/listapropiedades.tpl');                
     }
 
-    function ShowTypesProp($prop,$typeProp,$log){   //VENTASs
+    function ShowTypesProp($prop,$typeProp,$log,$id,$nroPag,$nroItems,$PropPorPagina){   //VENTASs
         $this->smarty->assign('title', $this->title); 
         $this->smarty->assign('propiedad', $prop); 
         $this->smarty->assign('tipo', $typeProp);
         $this->smarty->assign('log', $log);
+        $this->smarty->assign('id', $id);
+        $this->smarty->assign('pagina', $nroPag);
+        $this->smarty->assign('items', $nroItems);
+        $this->smarty->assign('propPorPagina', $PropPorPagina);
         $this->smarty->display('templates/busquedaportipo.tpl');                
         }
 
 
 
-     
     
 
     function ShowHomeLocation(){
@@ -91,8 +94,7 @@ function showAll($prop,$typeProp,$log,$nroPag,$nroItems,$PropPorPagina){   //VEN
         $smarty->display('templates/altaprop.tpl');
     }
 
-    function showOneEdit($prop,$typeProp,$log){
-        
+    function showOneEdit($prop,$typeProp,$log){      
         $this->title="Actualizar datos";
         $smarty = new Smarty();  
         $smarty->assign('title', $this->title); 
@@ -104,9 +106,7 @@ function showAll($prop,$typeProp,$log,$nroPag,$nroItems,$PropPorPagina){   //VEN
     }
 
    
-    function ShowError($log, $mensaje = ""){
-
-      
+    function ShowError($log, $mensaje = ""){   
         $this->smarty->assign('title', $this->title);
         $this->smarty->assign('mensaje', $mensaje);  
         $this->smarty->assign('log', $log);
@@ -138,6 +138,21 @@ function showAll($prop,$typeProp,$log,$nroPag,$nroItems,$PropPorPagina){   //VEN
         $this->smarty->display('templates/comentarios.tpl'); 
 
     }
+    
+
+    function ShowSearchAv($prop,$typeProp,$log,$nroPag,$nroItems,$PropPorPagina,$patron){
+
+        $this->smarty->assign('title', $this->title); 
+        $this->smarty->assign('propiedad', $prop); 
+        $this->smarty->assign('tipo', $typeProp);
+        $this->smarty->assign('log', $log);
+        $this->smarty->assign('pagina', $nroPag);
+        $this->smarty->assign('items', $nroItems);
+        $this->smarty->assign('propPorPagina', $PropPorPagina);
+        $this->smarty->assign('patron', $patron);
+        $this->smarty->display('templates/resultBusqueda.tpl');                
+    }
+
 }
 
 

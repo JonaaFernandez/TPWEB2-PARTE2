@@ -152,25 +152,27 @@ class PropertiesController{
     }
 
    
-/* no funciona */
-    /* function  showByType($params = null){
-        $nroPag = $params[':ID'];
-        $tipoprop = $params[':TIPO'];
-         $id = ($_POST['input_type']); 
-        $PropPorPagina = 3;  cantidad de propiedades por pagina.
+
+  function  searchByType($params = null){
+        $id = $params[':ID'];
+        $nroPag = $params[':PAG'];
+        $PropPorPagina = 3;  
         $filaInicial= (($nroPag-1) * $PropPorPagina);
-        $nroItems = $this->model->ContarItems();
-        $prop = $this->model->GetbyType($id,$nroPag,$PropPorPagina);
+        $nroItems = $this->model->ContarItemsId($id);
+        $prop = $this->model->GetPagesbyType($id,$filaInicial,$PropPorPagina);
         $typeProp = $this->typeModel->GetAll();
-        $log = $this->cont->checklogueado();;
-         $this->view->ShowAll($prop,$typeProp,$log,$nroPag,$nroItems,$PropPorPagina);
-    } */
-     function  searchByType(){
+        $log = $this->cont->checklogueado();
+        $this->view->ShowTypesProp($prop,$typeProp,$log,$id,$nroPag,$nroItems,$PropPorPagina); 
+    }
+     function searchByTypeInic(){
         $id = ($_POST['input_type']);
-        $prop = $this->model->GetPagesbyType2($id);
+        $nroPag = 1; 
+        $PropPorPagina = 3;
+        $prop = $this->model->GetPagesbyType($id,$nroPag,$PropPorPagina);
         $typeProp = $this->typeModel->GetAll();
-        $log = $this->cont->checklogueado();; 
-        $this->view->ShowTypesProp($prop,$typeProp,$log); 
+        $log = $this->cont->checklogueado();
+        $nroItems = $this->model->ContarItemsId($id);
+        $this->view->ShowTypesProp($prop,$typeProp,$log,$id,$nroPag,$nroItems,$PropPorPagina); 
     } 
 
    /*  function  showByType2(){
@@ -199,22 +201,45 @@ class PropertiesController{
         $this->view->ComentariosPropiedades($log,$data);
    }
 /* no funciona */
-   function busquedaAvanzada(){
-    $log = $this->cont->checklogueado();
-    if ($log==0){
-      header("Location: " . LOGIN);
-      die();
-    }
-    else{
+   
+function busquedaAvanzadaInic(){
+        $log = $this->cont->checklogueado();
+   
         if ((isset($_POST['input_search'])) && ($_POST['input_search']!= "")) {
-            $prop = $this->model->searchProp($_POST['input_search']);
-      /*       $this->view->ShowListLocation(); */
+            $patron =$_POST['input_search'];
+            $PropPorPagina = 3; // cantidad de propiedad(($nroPag-1) * $PropPorPagina);es por pagina.
+            $filaInicial= 0;
+            $prop = $this->model->pageSearch($patron,$filaInicial,$PropPorPagina);
+            $nroItems = $this->model->ContarItemsSearch($patron);
             $typeProp = $this->typeModel->GetAll();
-              /* $this->view->ShowAll($prop,$typeProp,$log);  */
+            $this->view->ShowSearchAv($prop,$typeProp,$log,1,$nroItems,$PropPorPagina,$patron); 
         }
         else {
-        $this->view->showError($log,"Los datos ingresados son incorrectos");
+            $this->view->showError($log,"Los datos ingresados son incorrectos");
     }
+  
+}
+
+
+
+function busquedaAvanzada($params=null){
+    $log = $this->cont->checklogueado();   
+    if($params){    
+        $patron = $params[':PATRON'];
+        $nroPag = $params[':PAG'];
+       
+        /*   if ((isset($_POST['input_search'])) && ($_POST['input_search']!= "")) {
+            $patron = ($_POST['input_search']);
+            $nroPag = $params[':ID']; */
+            $PropPorPagina = 3; // cantidad de propiedades por pagina.
+            $filaInicial= (($nroPag-1) * $PropPorPagina);
+            $prop = $this->model->pageSearch($patron,$filaInicial,$PropPorPagina);
+            $nroItems = $this->model->ContarItemsSearch($patron);
+            $typeProp = $this->typeModel->GetAll();
+            $this->view->ShowSearchAv($prop,$typeProp,$log,$nroPag,$nroItems,$PropPorPagina,$patron); 
+        }
+        else {
+            $this->view->showError($log,"Los datos ingresados son incorrectos");
     }
 }
 

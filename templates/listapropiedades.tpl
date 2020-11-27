@@ -64,14 +64,15 @@
             </div>
         </form>
         <p></p>
-        <form action="busquedaAvanzada" method="POST">
+       <form action="busquedaAvanzada" method="POST">
             <div class="form-group mr-5">
                 <p class=" gris-color h2 ml-1"> Busqueda Avanzada </p>
                 <input type="text" class="form-control" id="input_searh" name="input_search" placeholder="Ingrese palabras claves">
                 <button type="submit" class="ml-3 btn btn-primary bg-dark">Buscar</button>
 
             </div>
-        </form>
+        </form> 
+    
     </div>
     <p></p>
     {* SOLO PARA ADMIN *}

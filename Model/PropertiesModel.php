@@ -24,8 +24,16 @@ class PropertiesModel{
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
 
-    function GetByType($type,$nroPag,$PropPorPagina){
-        $sentencia = $this->db->prepare("SELECT * FROM propiedades WHERE tipo=?  LIMIT $nroPag , $PropPorPagina order by valor");
+    function pageSearch($search,$nroPag,$PropPorPagina){
+      $sentencia = $this->db->prepare("SELECT * FROM propiedades WHERE (id LIKE '%$search%') 
+      OR (tipo LIKE '%$search%') OR (nombre LIKE '%$search%') OR (descripcion LIKE '%$search%')
+      OR (direccion LIKE'%$search%') OR (fecha LIKE'%$search%') OR (valor LIKE'%$search%') LIMIT $nroPag , $PropPorPagina");
+      $sentencia->execute();
+      return $sentencia->fetchAll(PDO::FETCH_OBJ);
+  }
+
+    function GetPagesByType($type,$nroPag,$PropPorPagina){
+        $sentencia = $this->db->prepare("SELECT * FROM propiedades WHERE tipo=? LIMIT $nroPag , $PropPorPagina");
         $sentencia->execute([$type]);
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
@@ -73,9 +81,25 @@ class PropertiesModel{
         $sentencia = $this->db->prepare("SELECT * FROM propiedades order by tipo");
         $sentencia->execute();
         return $sentencia->rowCount();
-
       }
      
+      function ContarItemsSearch($search){
+        $sentencia = $this->db->prepare("SELECT * FROM propiedades WHERE (id LIKE '%$search%') 
+        OR (tipo LIKE '%$search%') OR (nombre LIKE '%$search%') OR (descripcion LIKE '%$search%')
+        OR (direccion LIKE'%$search%') OR (fecha LIKE'%$search%') OR (valor LIKE'%$search%')");
+        $sentencia->execute();
+        return $sentencia->rowCount();
+      }
+
+
+      function ContarItemsId($id){
+        $sentencia = $this->db->prepare("SELECT * FROM propiedades WHERE tipo=?");
+        $sentencia->execute([$id]);
+        return $sentencia->rowCount();
+      }
+
+
+
 }
 
 ?>
