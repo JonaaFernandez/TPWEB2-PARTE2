@@ -82,7 +82,7 @@ function showAll($prop,$typeProp,$log,$nroPag,$nroItems,$PropPorPagina){   //VEN
 
 
     function ShowListLocation(){
-        header("Location: ".BASE_URL."ventas");
+        header("Location: ".BASE_URL."mostrarpagina/1");
     }
 
     

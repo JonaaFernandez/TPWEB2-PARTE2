@@ -65,7 +65,7 @@
         </tbody>
     </table>
     
-    <a href="ventas" type="button" class="btn btn-primary  ml-0 bg-dark mt-4" value="volver"> VOLVER </a>
+    <a href="mostrarpagina/1" type="button" class="btn btn-primary  ml-0 bg-dark mt-4" value="volver"> VOLVER </a>
 </div>
 
 
