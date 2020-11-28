@@ -27,12 +27,16 @@ class PropertiesController{
 
     function Home(){
      $log = $this->cont->checklogueado();
-     $this->view->ShowHome($log);
+     $user = $this->cont->admin();
+     $registrado = $this->cont->registrado();
+     $this->view->ShowHome($log,$user,$registrado);
     }
 
     function Alquileres(){
+    $user = $this->cont->admin();
+    $registrado = $this->cont->registrado();
     $log = $this->cont->checklogueado();
-    $this->view->ShowAlquileres($log);
+    $this->view->ShowAlquileres($log,$user,$registrado);
     }
 
      
@@ -166,13 +170,13 @@ class PropertiesController{
     }
      function searchByTypeInic(){
         $id = ($_POST['input_type']);
-        $nroPag = 1; 
+        $filaInicial = 0; 
         $PropPorPagina = 3;
-        $prop = $this->model->GetPagesbyType($id,$nroPag,$PropPorPagina);
+        $prop = $this->model->GetPagesbyType($id,$filaInicial,$PropPorPagina);
         $typeProp = $this->typeModel->GetAll();
         $log = $this->cont->checklogueado();
         $nroItems = $this->model->ContarItemsId($id);
-        $this->view->ShowTypesProp($prop,$typeProp,$log,$id,$nroPag,$nroItems,$PropPorPagina); 
+        $this->view->ShowTypesProp($prop,$typeProp,$log,$id,$filaInicial,$nroItems,$PropPorPagina); 
     } 
 
    /*  function  showByType2(){

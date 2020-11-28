@@ -50,8 +50,24 @@ class UserController{
         } 
     }
 
+    public function admin(){
+        if(session_status() !== PHP_SESSION_ACTIVE){
+            session_start();
+        }         
+            if(isset($_SESSION['USERNAME'])){
+            return ($_SESSION['USERNAME']);
+        } 
+          
+    }
 
-
+    public function registrado(){
+        if(session_status() !== PHP_SESSION_ACTIVE){
+            session_start();
+        }         
+        if (isset($_SESSION['registrado'])){
+        return ($_SESSION['registrado']); 
+        }
+    }
     public function Login(){
         $this->view->ShowLogin(0,'');
 

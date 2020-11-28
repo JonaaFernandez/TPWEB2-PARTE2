@@ -10,28 +10,23 @@ class PropertiesView{
     function __construct(){
         $this->title = "Tu Inmobiliaria";
         $this->smarty = new Smarty(); 
-         if(session_status() !== PHP_SESSION_ACTIVE){
-            session_start();
-        }         
-        if(isset($_SESSION['USERNAME'])){
-            $this->smarty->assign('user', $_SESSION['USERNAME']);
-        } 
-        else if (isset($_SESSION['registrado'])){
-            $this->smarty->assign('registrado', $_SESSION['registrado']); 
-
-       }
+         
     } 
     
    
-    function ShowHome($log){
+    function ShowHome($log,$user,$registrado){
         $this->smarty->assign('title', $this->title);
+        $this->smarty->assign('user',$user);
+        $this->smarty->assign('registrado', $registrado);
         $this->smarty->assign('log', $log);
         $this->smarty->display('templates/home.tpl');   
    
     }
 
-    function ShowAlquileres($log){
+    function ShowAlquileres($log,$user,$registrado){
         $this->smarty->assign('log', $log);
+        $this->smarty->assign('user',$user);
+        $this->smarty->assign('registrado', $registrado);
         $this->smarty->assign('title', $this->title); 
         $this->smarty->display('templates/alquileres.tpl');   
    
