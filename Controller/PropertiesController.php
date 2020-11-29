@@ -41,8 +41,10 @@ class PropertiesController{
 
      
     function Contacto(){
-    $log = $this->cont->checklogueado();
-     $this->view->ShowContacto($log);
+        $log = $this->cont->checklogueado();
+        $user = $this->cont->admin();
+        $registrado = $this->cont->registrado();
+     $this->view->ShowContacto($log,$user,$registrado);
     }
 
    /*  function showAllProp(){   Muestra "ventas, dependiendo si estoy como admin o usuario" 
@@ -60,13 +62,17 @@ class PropertiesController{
         $nroItems = $this->model->ContarItems();
         $typeProp = $this->typeModel->GetAll();
         $log = $this->cont->checklogueado();
-        $this->view->ShowAll($prop,$typeProp,$log,$nroPag,$nroItems,$PropPorPagina);
+        $user = $this->cont->admin();
+        $registrado = $this->cont->registrado();
+        $this->view->ShowAll($prop,$typeProp,$log,$nroPag,$nroItems,$PropPorPagina,$user,$registrado);
        } 
 
 
     
     function cargaProp($params = null){
-    $log = $this->cont->checklogueado();
+        $log = $this->cont->checklogueado();
+        $user = $this->cont->admin();
+        $registrado = $this->cont->registrado();
     if (!$log) { 
       /*   $this->cont->Login(); */
       header("Location: " . LOGIN);
@@ -76,7 +82,7 @@ class PropertiesController{
         $prop_id = $params[':ID'];
         $prop = $this->model->GetProp($prop_id);
         $typeProp = $this->typeModel->GetAll();
-        $this->view->ShowOneEdit($prop,$typeProp,$log);
+        $this->view->ShowOneEdit($prop,$typeProp,$log,$user,$registrado);
     }   
     }
 
@@ -85,14 +91,18 @@ class PropertiesController{
 
     function formNew(){
         $log = $this->cont->checklogueado();
+        $user = $this->cont->admin();
+        $registrado = $this->cont->registrado();
         $typeProp = $this->typeModel->GetAll();
-        $this->view->showFormNew($typeProp,$log);
+        $this->view->showFormNew($typeProp,$log,$user,$registrado);
     }
 
  
   
     function InsertProp(){
         $log = $this->cont->checklogueado();
+        $user = $this->cont->admin();
+        $registrado = $this->cont->registrado();
         if (!$log){
             header("Location: " . LOGIN);
             die();
@@ -108,9 +118,9 @@ class PropertiesController{
         if ((isset($_POST['input_name'])) && (isset($_POST['input_value'])) && ($_POST['input_name']!= "")  && ($_POST['input_value'] !="" )) {
              $typeProp = $this->typeModel->GetAll();
              $this->model->insertProp($_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_description'],$_POST['input_value'],$_POST['input_date'],$destino);
-             $this->view->showformNew($typeProp,$log);
+             $this->view->showformNew($typeProp,$log,$user,$registrado);
         } else {
-            $this->view->showerror($log,"Los datos ingresados son incorrectos");
+            $this->view->showerror($log,$user,$registrado,"Los datos ingresados son incorrectos");
         }
     }
     }
@@ -118,15 +128,19 @@ class PropertiesController{
       
     function formEditProp(){
         $log = $this->cont->checklogueado();
+        $user = $this->cont->admin();
+        $registrado = $this->cont->registrado();
         $oneProp= $this->model->getProp($_POST['ID']);
         $typeProp = $this->typeModel->GetAllTypesProp();
-        $this->view->ShowOneEdit($oneProp,$typeProp,$log);
+        $this->view->ShowOneEdit($oneProp,$typeProp,$log,$user,$registrado);
       
     }
 
     
     function EditProp(){
         $log = $this->cont->checklogueado();
+        $user = $this->cont->admin();
+        $registrado = $this->cont->registrado();
         if ($log==0){
           /*   $this->cont->Login(); */
           header("Location: " . LOGIN);
@@ -139,7 +153,7 @@ class PropertiesController{
                 $this->view->ShowListLocation();
             }
             else {
-            $this->view->showError($log,"Los datos ingresados son incorrectos");
+            $this->view->showError($log,$user,$registrado,"Los datos ingresados son incorrectos");
         }
         }
     }
@@ -152,7 +166,9 @@ class PropertiesController{
         $typeProp = $this->typeModel->GetType($id);
         $type=$typeProp[0]->nombre; 
         $log = $this->cont->checklogueado();
-       $this->view->ShowOne($oneProp,$type,$log); 
+        $user = $this->cont->admin();
+        $registrado = $this->cont->registrado();
+       $this->view->ShowOne($oneProp,$type,$log,$user,$registrado); 
     }
 
    
@@ -166,7 +182,9 @@ class PropertiesController{
         $prop = $this->model->GetPagesbyType($id,$filaInicial,$PropPorPagina);
         $typeProp = $this->typeModel->GetAll();
         $log = $this->cont->checklogueado();
-        $this->view->ShowTypesProp($prop,$typeProp,$log,$id,$nroPag,$nroItems,$PropPorPagina); 
+        $user = $this->cont->admin();
+        $registrado = $this->cont->registrado();
+        $this->view->ShowTypesProp($prop,$typeProp,$log,$id,$nroPag,$nroItems,$PropPorPagina,$user,$registrado); 
     }
      function searchByTypeInic(){
         $id = ($_POST['input_type']);
@@ -175,8 +193,10 @@ class PropertiesController{
         $prop = $this->model->GetPagesbyType($id,$filaInicial,$PropPorPagina);
         $typeProp = $this->typeModel->GetAll();
         $log = $this->cont->checklogueado();
+        $user = $this->cont->admin();
+        $registrado = $this->cont->registrado();
         $nroItems = $this->model->ContarItemsId($id);
-        $this->view->ShowTypesProp($prop,$typeProp,$log,$id,$filaInicial,$nroItems,$PropPorPagina); 
+        $this->view->ShowTypesProp($prop,$typeProp,$log,$id,$filaInicial,$nroItems,$PropPorPagina,$user,$registrado); 
     } 
 
    /*  function  showByType2(){
@@ -189,6 +209,8 @@ class PropertiesController{
   
     function delProp($params = null){
         $log = $this->cont->checklogueado();
+        /* $user = $this->cont->admin();                            !!!!!!!!!!!!!!! ACA VA TAMBIEN? !!!!!!!!!!
+        $registrado = $this->cont->registrado(); */
         if (!$log){
             $this->cont->login();
         }else{
@@ -200,14 +222,19 @@ class PropertiesController{
 
     function GetComentarios($params = null){
         $log = $this->cont->checklogueado();
+        $user = $this->cont->admin();
+        $registrado = $this->cont->registrado();
         $coment = $params[':ID']; 
         $data =  $this->model->getProp($coment);
-        $this->view->ComentariosPropiedades($log,$data);
+        $this->view->ComentariosPropiedades($log,$data,$user,$registrado);
    }
 /* no funciona */
    
 function busquedaAvanzadaInic(){
-        $log = $this->cont->checklogueado();
+    /* DUDAS */
+    $log = $this->cont->checklogueado();
+    $user = $this->cont->admin();
+    $registrado = $this->cont->registrado();
    
         if ((isset($_POST['input_search'])) && ($_POST['input_search']!= "")) {
             $patron =$_POST['input_search'];
@@ -216,10 +243,10 @@ function busquedaAvanzadaInic(){
             $prop = $this->model->pageSearch($patron,$filaInicial,$PropPorPagina);
             $nroItems = $this->model->ContarItemsSearch($patron);
             $typeProp = $this->typeModel->GetAll();
-            $this->view->ShowSearchAv($prop,$typeProp,$log,1,$nroItems,$PropPorPagina,$patron); 
+            $this->view->ShowSearchAv($prop,$typeProp,$log,1,$nroItems,$PropPorPagina,$patron,$user,$registrado); 
         }
         else {
-            $this->view->showError($log,"Los datos ingresados son incorrectos");
+            $this->view->showError($log,$user,$registrado,"Los datos ingresados son incorrectos");
     }
   
 }
@@ -227,7 +254,9 @@ function busquedaAvanzadaInic(){
 
 
 function busquedaAvanzada($params=null){
-    $log = $this->cont->checklogueado();   
+    $log = $this->cont->checklogueado();
+    $user = $this->cont->admin();
+    $registrado = $this->cont->registrado();
     if($params){    
         $patron = $params[':PATRON'];
         $nroPag = $params[':PAG'];
@@ -240,10 +269,11 @@ function busquedaAvanzada($params=null){
             $prop = $this->model->pageSearch($patron,$filaInicial,$PropPorPagina);
             $nroItems = $this->model->ContarItemsSearch($patron);
             $typeProp = $this->typeModel->GetAll();
-            $this->view->ShowSearchAv($prop,$typeProp,$log,$nroPag,$nroItems,$PropPorPagina,$patron); 
+            $this->view->ShowSearchAv($prop,$typeProp,$log,$nroPag,$nroItems,$PropPorPagina,$patron,$user,$registrado); 
+            /* DUDAS SI VA ACA TAMBIEN */
         }
         else {
-            $this->view->showError($log,"Los datos ingresados son incorrectos");
+            $this->view->showError($log,$user,$registrado,"Los datos ingresados son incorrectos");
     }
 }
 

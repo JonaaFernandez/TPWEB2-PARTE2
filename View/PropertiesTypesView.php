@@ -27,10 +27,12 @@ class PropertiesTypesView{
 
 
 
-function showAllTypes($type,$log){   // muestra todos los tipos de propiedad
+function showAllTypes($type,$log,$user,$registrado){   // muestra todos los tipos de propiedad
     $tipo=$type;
     $this->smarty->assign('title', $this->title); 
     $this->smarty->assign('tipito', $tipo);
+    $this->smarty->assign('user', $user);
+    $this->smarty->assign('registrado', $registrado);
     $this->smarty->assign('log', $log);
     $this->smarty->display('templates/listaTipos.tpl');
 
@@ -44,33 +46,39 @@ function showAllTypes($type,$log){   // muestra todos los tipos de propiedad
 
 
 
-    function ShowOneType($oneType,$log){
+    function ShowOneType($oneType,$log,$user,$registrado){
         $smarty = new Smarty();  
         $smarty->assign('title', $this->title); 
         $smarty->assign('tipo', $oneType);
         $smarty->assign('log', $log);
+        $smarty->assign('user', $user);
+        $smarty->assign('registrado', $registrado);
         $smarty->display('templates/showOneType.tpl');
 
     }
         
 
 
-    function ShowOneEdit($oneType,$log){
+    function ShowOneEdit($oneType,$log,$user,$registrado){
         $smarty = new Smarty();  
         $smarty->assign('title', $this->title); 
         $smarty->assign('tipo', $oneType);
         $smarty->assign('log', $log);
+        $smarty->assign('user', $user);
+        $smarty->assign('registrado', $registrado);
         $smarty->display('templates/showFormEdit.tpl');
 
     }
 
 
-    function ShowError($log, $mensaje = ""){
+    function ShowError($log,$user,$registrado, $mensaje = ""){
 
         $smarty = new Smarty();
         $smarty->assign('title', $this->title);
         $smarty->assign('mensaje', $mensaje);  
         $smarty->assign('log', $log);
+        $smarty->assign('user', $user);
+        $smarty->assign('registrado', $registrado);
         $smarty->display('templates/error.tpl'); 
     
     }
