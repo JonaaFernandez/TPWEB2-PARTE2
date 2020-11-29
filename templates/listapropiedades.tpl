@@ -103,9 +103,11 @@
         {/for}
 
         <li class="page-item">
-            <a class="page-link" {if $pagina==(($items/$propPorPagina) +1)|string_format:"%d"} href='mostrarpagina/{$pagina}' {else} href='mostrarpagina/{$pagina+1}' {/if}>Siguiente</a>
+            <a class="page-link" {if $pagina==(($items/$propPorPagina)+1)|string_format:"%d"} href='mostrarpagina/{$pagina}' {else} href='mostrarpagina/{$pagina+1}' {/if}>Siguiente</a>
         </li>
+       
         {$pagina}  Y  {$i}
+        
     </ul>
 </nav>
 </div>
