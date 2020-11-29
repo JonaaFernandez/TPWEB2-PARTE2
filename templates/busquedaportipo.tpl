@@ -105,6 +105,7 @@
         <li class="page-item">
             <a class="page-link" {if $pagina == (($items/$propPorPagina) +1)|string_format:"%d"} href='buscarportipo/{$id}/{$pagina}' {else} href= 'buscarportipo/{$id}/{$pagina+1}' {/if}>Siguiente</a>
         </li>
+        {$pagina}  Y  {$i}
     </ul>
 </nav>
 </div>

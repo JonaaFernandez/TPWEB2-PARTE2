@@ -96,15 +96,16 @@
 
         {for $i=1 to ($items/$propPorPagina)}
             {if $pagina == $i}
-                <li class="page-item active"><a class="page-link" href='mostrarpagina/{$i}'>{$i} <span class="sr-only">(current)</span></a></li>
+                <li class="page-item active"><a class="page-link" href='mostrarpagina/{$i}'>{$i}</a></li>
             {else}
-                <li class="page-item"><a class="page-link" href='mostrarpagina/{$i}'>{$i} <span class="sr-only">(current)</span></a></li>
+                <li class="page-item"><a class="page-link" href='mostrarpagina/{$i}'>{$i}</a></li>
             {/if}
         {/for}
 
         <li class="page-item">
             <a class="page-link" {if $pagina==(($items/$propPorPagina) +1)|string_format:"%d"} href='mostrarpagina/{$pagina}' {else} href='mostrarpagina/{$pagina+1}' {/if}>Siguiente</a>
         </li>
+        {$pagina}  Y  {$i}
     </ul>
 </nav>
 </div>
