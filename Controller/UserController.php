@@ -155,7 +155,9 @@ class UserController{
             $user= $_SESSION['USERNAME'];
             $this->view->ShowAll($users,$log,$user); 
         } else {
-            header("Location: " . LOGIN);
+            $user= $_SESSION['registrado'];
+            $this->view->showerror($log , $user, "NO TIENE PERMISOS");
+         /*    header("Location: " . LOGIN); */
           die();
         }
     }
