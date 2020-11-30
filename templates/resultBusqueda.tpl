@@ -94,7 +94,11 @@
         </li>
 
         {for $i=1 to ($items/$propPorPagina)}
+            {if $pagina == $i}
+                <li class="page-item active"><a class="page-link" href='mostrarBusqueda/{$patron}/{$i}'>{$i}</a></li>
+            {else}
             <li class="page-item"><a class="page-link" href='mostrarBusqueda/{$patron}/{$i}'>{$i}</a></li>
+            {/if}
         {/for}
 
         <li class="page-item">
@@ -102,6 +106,7 @@
         </li>
         {* {$tipoprop->tipo}  *}
     </ul>
+    {$pagina}  Y  {$i}
 </nav>
 </div>
 {include file="footer.tpl"}

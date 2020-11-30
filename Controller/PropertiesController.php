@@ -189,9 +189,10 @@ class PropertiesController{
     }
      function searchByTypeInic(){
         $id = ($_POST['input_type']);
-        $filaInicial = 0; 
         $PropPorPagina = 3;
-        $prop = $this->model->GetPagesbyType($id,$filaInicial,$PropPorPagina);
+        $filaInicial =1;
+        $prop = $this->model->GetPagesbyType($id,0,$PropPorPagina);
+       /*  $prop = $this->model->GetPagesbyType($id,$filaInicial,$PropPorPagina); */
         $typeProp = $this->typeModel->GetAll();
         $log = $this->cont->checklogueado();
         $user = $this->cont->admin();
