@@ -160,7 +160,7 @@ class UserController{
             $this->view->ShowAll($users,$log,$user); 
         } else {
             $user= $_SESSION['registrado'];
-            $this->view->showerror($log , $user, "NO TIENE PERMISOS");
+            $this->view->showerror($log , $user, "No tiene permisos de administrador");
          /*    header("Location: " . LOGIN); */
           die();
         }
