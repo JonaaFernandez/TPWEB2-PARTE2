@@ -80,6 +80,7 @@ class UserController{
        /*  $email = $_POST["input_email"]; */
 
         if(isset($user)){
+            $log = $this->checklogueado();
             $userFromDB= $this->model->Getuser($user);
             
             if(isset($userFromDB) && $userFromDB){               
@@ -100,10 +101,10 @@ class UserController{
 
                           
                 }else{
-                    $this->view->ShowLogin("Contraseña Incorrecta");                   
+                    $this->view->ShowLogin($log,"Contraseña Incorrecta");                   
                 }
             }else{
-                $this->view->ShowLogin("Usuario Inexistente");             
+                $this->view->ShowLogin($log,"Usuario Inexistente");             
             }
         }     
     }
@@ -118,6 +119,7 @@ class UserController{
    
 
    function SignUp(){
+        $log = $this->checklogueado();
         $newUser = $_POST['input_user'];
         $newPassw = $_POST['input_password'];
         $newEmail = $_POST["input_email"]; 
@@ -125,7 +127,7 @@ class UserController{
         if(isset($newUser) && ($newUser!='')){
             $userFromDB= $this->model->Getuser($newUser);
             if($userFromDB){
-                $this->view->ShowLogin("El usuario ya existe"); 
+                $this->view->ShowLogin($log,"El usuario ya existe"); 
                 die();
             }
             else{
@@ -138,12 +140,14 @@ class UserController{
                 $_SESSION['LAST_ACTIVITY'] = time();    
                 $this->view->BackHome();
                 }else{
-                    $this->view->ShowLogin("Los datos ingresados son incorrectos");                   
+                    $this->view->ShowLogin($log,"Contraseña nula o invalida"); 
+                    die();                  
                 }
             }
         }
             else{
-                $this->view->ShowLogin("Los datos ingresados son incorrectos");             
+                $this->view->ShowLogin($log,"Usuario nulo o invalido"); 
+                die();             
             }
             
      }
