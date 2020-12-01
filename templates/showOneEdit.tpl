@@ -68,7 +68,7 @@
                         <label class="form-check-label" for=" "> Borrar Imagen</label>     
                         <input type="checkbox"  name="borrarImg" >
                         {else}    
-                            
+                            NO HAY IMAGEN
                             <input type="file" class="form-control" id="input_imagen" name="img" value="{$imagen}">
                         {/if}
                     </div>      

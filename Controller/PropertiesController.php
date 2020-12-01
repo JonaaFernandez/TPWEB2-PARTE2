@@ -164,14 +164,15 @@ class PropertiesController{
                     $imagen=null; 
                     unlink($ruta);   
                     $this->model->updateProp($_POST['input_id'],$_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_value'],$_POST['input_description'],$_POST['input_date'],$imagen);
-                } else {
-                    if (isset($_POST['nombreImg'])){
+                /* HASTA ACA ENTRA BIEN */
+                } 
+                else {
+                         if (isset($_POST['nombreImg'])){
                         $this->model->updateProp($_POST['input_id'],$_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_value'],$_POST['input_description'],$_POST['input_date'],$_POST['nombreImg']);
-                    }
-                    else{
-                   // si tiene images, dejarla como esta
-                        if (isset($_FILES['img'])){
-                            echo "holaaaaaa" ;
+                        }
+                      else{
+                      // si tiene images, dejarla como esta
+                        if (isset($_FILES['Img'])){
                             $uploads=getcwd() . '/uploads';  
                             $destino=tempnam($uploads,$_FILES['img']['name']) ;  
                             move_uploaded_file($_FILES['img']['tmp_name'], $destino); 
