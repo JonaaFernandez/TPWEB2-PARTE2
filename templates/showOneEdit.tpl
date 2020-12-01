@@ -67,11 +67,9 @@
                         <img class="mt-2 " width="180px" height="180px" src="uploads/{$imagen}">
                         <label class="form-check-label" for=" "> Borrar Imagen</label>     
                         <input type="checkbox"  name="borrarImg" >
-                        {else}  
-                              
-                            <label class="form-check-label" for=" "> Imagen</label>         
-                            <input type="file" class="form-control" id="input_imagen" name="img" value="{$propiedad[0]->imagen}">
+                        {else}    
                             
+                            <input type="file" class="form-control" id="input_imagen" name="img" value="{$imagen}">
                         {/if}
                     </div>      
                 </div>
