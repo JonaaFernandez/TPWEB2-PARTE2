@@ -89,7 +89,8 @@ $r->addRoute("insertTipo","POST", "PropertiesTypesController", "insert");
 
 $r->addRoute("eliminarTipo/:ID","GET", "PropertiesTypesController", "delete");
 
-
+// default route
+$r->setDefaultRoute("PropertiesController", "home");
     //run
     $r->route($_GET['action'], $_SERVER['REQUEST_METHOD']); 
     
