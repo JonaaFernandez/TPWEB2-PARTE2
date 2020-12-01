@@ -83,7 +83,7 @@ class PropertiesController{
         $this->view->showerror($log,$user,$registrado, "No tiene permisos de Administrador");
     }
      else{
-        $this->view->showerror($log,$user,$registrado, "Debe estar logueado y ser Administrador");
+        $this->view->showerror($log,$user,$registrado, "No tiene permisos de Administrador");
      }
     }
 
@@ -192,7 +192,6 @@ class PropertiesController{
         $PropPorPagina = 3;
         $filaInicial =1;
         $prop = $this->model->GetPagesbyType($id,0,$PropPorPagina);
-       /*  $prop = $this->model->GetPagesbyType($id,$filaInicial,$PropPorPagina); */
         $typeProp = $this->typeModel->GetAll();
         $log = $this->cont->checklogueado();
         $user = $this->cont->admin();
@@ -223,7 +222,7 @@ class PropertiesController{
            }
            
         else{
-            $this->view->showerror($log,$user,$registrado, "Debe estar logueado y ser Administrador");
+            $this->view->showerror($log,$user,$registrado, "No tiene permisos de Administrador");
         }
     }
    
