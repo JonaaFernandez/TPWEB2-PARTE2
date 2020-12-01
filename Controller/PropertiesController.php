@@ -125,6 +125,14 @@ class PropertiesController{
     }
     }
 
+    function borrarImagen($params = null){
+        $imagen = $params[':ID'];
+        $ruta = './uploads/' . $imagen;
+        echo $ruta;
+        unlink($ruta);
+       return;
+    
+    }
       
     function formEditProp(){
         $log = $this->cont->checklogueado();
