@@ -15,7 +15,7 @@
     </div>
 
     
-    <form action="editar" method="POST"  aria-describedby="inmput_name">
+    <form action="editar" method="POST"  aria-describedby="inmput_name"  enctype="multipart/form-data">
     <div class="container d-flex flex-row" >
         <div class="w-50 p-3" name="izquierdo"> 
                 <div class="form-group">
@@ -59,15 +59,18 @@
             </div>
             <div class="w-50 p-3" name="derecho">  
                 <div class="body-bgc col-lg-12 d-flex justify-content-around min height=130px">
-                    <div class="form-group">
+                   <p></p>
+                <div class="form-group">
                         {$imagen=$propiedad[0]->imagen} 
+                        <input type="hidden"  name="nombreImg" value="{$imagen}">
                         {if $imagen}
                         <img class="mt-2 " width="180px" height="180px" src="uploads/{$imagen}">
-                        {*  <button type="submit" class="btn btn-primary mt-4 bg-dark">Eliminar</button> *}
-                        <a href="borrarImagen/{$imagen}" class="p-1 m-1 bg-dark ancho-ver text-center "> Borrar Img. </a>
-                        {else}        
+                        <label class="form-check-label" for=" "> Borrar Imagen</label>     
+                        <input type="checkbox"  name="borrarImg" >
+                        {else}  
+                              
                             <label class="form-check-label" for=" "> Imagen</label>         
-                            <input type="file" class="form-control" id="input_imagen" name="input_imagen">
+                            <input type="file" class="form-control" id="input_imagen" name="img" value="{$propiedad[0]->imagen}">
                             
                         {/if}
                     </div>      

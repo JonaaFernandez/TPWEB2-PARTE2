@@ -50,7 +50,7 @@
     $r->addRoute("mostrarPorTipo", "POST", "PropertiesController", "searchByTypeInic");
     $r->addRoute("buscarportipo/:ID/:PAG", "GET", "PropertiesController", "searchByType");
     $r->addRoute("busquedaAvanzada", "POST", "PropertiesController", "busquedaAvanzadaInic");
-    $r->addRoute("borrarImagen/:ID", "GET", "PropertiesController", "borrarImagen");
+   /*  $r->addRoute("borrarImagen/:ID", "GET", "PropertiesController", "borrarImagen"); */
 
 //Comentarios
      $r->addRoute("coments/:ID", "GET", "PropertiesController", "GetComentarios");

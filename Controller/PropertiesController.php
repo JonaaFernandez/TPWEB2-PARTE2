@@ -125,15 +125,15 @@ class PropertiesController{
         }
     }
     }
-
-    function borrarImagen($params = null){
-        $imagen = $params[':ID'];
+/* 
+    function borrarImagen($imagen){
+       /*  $imagen = $params[':ID']; 
         $ruta = './uploads/' . $imagen;
         echo $ruta;
         unlink($ruta);
        return;
     
-    }
+    } */
       
     function formEditProp(){
         $log = $this->cont->checklogueado();
@@ -157,16 +157,37 @@ class PropertiesController{
         }
         else{
           /*   $id = ($_POST['input_id']); */
-            if ((isset($_POST['input_name'])) && (isset($_POST['input_value'])) && ($_POST['input_name']!= "")  && ($_POST['input_value'] !="" )) {
-                $this->model->updateProp($_POST['input_id'],$_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_value'],$_POST['input_description'],$_POST['input_date']);
+            if ((isset($_POST['input_name'])) && (isset($_POST['input_value'])) && ($_POST['input_name']!= "")  && ($_POST['input_value'] !="" ))   {
+                if (isset($_POST['borrarImg'])){
+                    $imagen =($_POST['nombreImg']);
+                    $ruta = './uploads/' . $imagen;
+                    $imagen=null; 
+                    unlink($ruta);   
+                    $this->model->updateProp($_POST['input_id'],$_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_value'],$_POST['input_description'],$_POST['input_date'],$imagen);
+                } else {
+                   
+                    if (isset($_FILES['img'])){
+                        echo "holaaaaaa" ;
+                        $uploads=getcwd() . '/uploads';  
+                        $destino=tempnam($uploads,$_FILES['img']['name']) ;  
+                        move_uploaded_file($_FILES['img']['tmp_name'], $destino); 
+                        $destino=basename($destino);
+                       echo $destino;
+                       $this->model->updateProp($_POST['input_id'],$_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_value'],$_POST['input_description'],$_POST['input_date'],$destino);
+                    } else{
+               /*  echo $destino;
+                die(); */
+                $this->model->updateProp($_POST['input_id'],$_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_value'],$_POST['input_description'],$_POST['input_date'],null);
+                    }
+           }
                 $this->view->ShowListLocation();
             }
             else {
             $this->view->showError($log,$user,$registrado,"Los datos ingresados son incorrectos");
+             }
         }
-        }
+    
     }
- 
 
     function viewOne($params = null){
         $prop_id = $params[':ID'];
@@ -195,6 +216,8 @@ class PropertiesController{
         $registrado = $this->cont->registrado();
         $this->view->ShowTypesProp($prop,$typeProp,$log,$id,$nroPag,$nroItems,$PropPorPagina,$user,$registrado); 
     }
+
+
      function searchByTypeInic(){
         $id = ($_POST['input_type']);
         $PropPorPagina = 3;

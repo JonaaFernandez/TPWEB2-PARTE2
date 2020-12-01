@@ -66,9 +66,9 @@ class PropertiesModel{
 
 
     
-    function updateProp($id,$type,$name,$adress,$value,$description,$date){
-          $sentencia = $this->db->prepare("UPDATE propiedades SET tipo=?, nombre=?, direccion=?,  valor=?, descripcion=?, fecha=?  WHERE id=? ");
-          $sentencia->execute([$type,$name,$adress,$value,$description,$date,$id]);
+    function updateProp($id,$type,$name,$adress,$value,$description,$date,$imagen){
+          $sentencia = $this->db->prepare("UPDATE propiedades SET tipo=?, nombre=?, direccion=?,  valor=?, descripcion=?, fecha=?, imagen=?  WHERE id=?");
+          $sentencia->execute([$type,$name,$adress,$value,$description,$date,$imagen,$id]);
       return;
     }
      
