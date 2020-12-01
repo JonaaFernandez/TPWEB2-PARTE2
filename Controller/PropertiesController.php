@@ -73,17 +73,18 @@ class PropertiesController{
         $log = $this->cont->checklogueado();
         $user = $this->cont->admin();
         $registrado = $this->cont->registrado();
-    if (!$log) { 
-      /*   $this->cont->Login(); */
-      header("Location: " . LOGIN);
-      die();
-    }
-    else {
+    if ($user){
         $prop_id = $params[':ID'];
         $prop = $this->model->GetProp($prop_id);
         $typeProp = $this->typeModel->GetAll();
         $this->view->ShowOneEdit($prop,$typeProp,$log,$user,$registrado);
-    }   
+    }
+    else if ($registrado){
+        $this->view->showerror($log,$user,$registrado, "No tiene permisos de Administrador");
+    }
+     else{
+        $this->view->showerror($log,$user,$registrado, "No tiene permisos de Administrador");
+     }
     }
 
    
@@ -196,9 +197,9 @@ class PropertiesController{
     }
      function searchByTypeInic(){
         $id = ($_POST['input_type']);
-        $filaInicial = 0; 
         $PropPorPagina = 3;
-        $prop = $this->model->GetPagesbyType($id,$filaInicial,$PropPorPagina);
+        $filaInicial =1;
+        $prop = $this->model->GetPagesbyType($id,0,$PropPorPagina);
         $typeProp = $this->typeModel->GetAll();
         $log = $this->cont->checklogueado();
         $user = $this->cont->admin();
@@ -217,16 +218,22 @@ class PropertiesController{
   
     function delProp($params = null){
         $log = $this->cont->checklogueado();
-        /* $user = $this->cont->admin();                            !!!!!!!!!!!!!!! ACA VA TAMBIEN? !!!!!!!!!!
-        $registrado = $this->cont->registrado(); */
-        if (!$log){
-            $this->cont->login();
-        }else{
+        $user = $this->cont->admin();                            
+        $registrado = $this->cont->registrado();
+        if ($user){
             $prop_id = $params[':ID'];
             $this->model->deleteProp($prop_id);
             $this->view->ShowListLocation();
         }
+           else if($registrado){
+            $this->view->showerror($log,$user,$registrado, "No tiene permisos de Administrador");
+           }
+           
+        else{
+            $this->view->showerror($log,$user,$registrado, "No tiene permisos de Administrador");
+        }
     }
+   
 
     function GetComentarios($params = null){
         $log = $this->cont->checklogueado();

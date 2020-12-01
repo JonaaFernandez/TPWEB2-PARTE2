@@ -6,4 +6,7 @@
 
 </div>
 
+<div class="mt-4 d-flex">
+<a href="home" type="button" class=" mx-auto btn btn-primary  ml-0 bg-dark" value="volver"> VOLVER </a>
+</div>
 {include file="footer.tpl"}
