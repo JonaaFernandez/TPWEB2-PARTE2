@@ -158,39 +158,35 @@ class PropertiesController{
         else{
           /*   $id = ($_POST['input_id']); */
             if ((isset($_POST['input_name'])) && (isset($_POST['input_value'])) && ($_POST['input_name']!= "")  && ($_POST['input_value'] !="" ))   {
-                if (isset($_POST['borrarImg'])){
+                if (isset($_POST['borrarImg'])){ // si esta el checkbox cliqueado.
                     $imagen =($_POST['nombreImg']);
                     $ruta = './uploads/' . $imagen;
                     $imagen=null; 
                     unlink($ruta);   
                     $this->model->updateProp($_POST['input_id'],$_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_value'],$_POST['input_description'],$_POST['input_date'],$imagen);
-                echo "SE BORRO BIEN LA CONCHA DE SU MADRE";
                  $this->view->ShowListLocation(); 
-                } else {
-                    if (isset($_POST['img'])){
-                        $this->model->updateProp($_POST['input_id'],$_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_value'],$_POST['input_description'],$_POST['input_date'],$_POST['nombreImg']);
+                } else { // si esta la foto y no la quiero cambiar.
+                    if (isset($_POST['img'])){ // SI ACA PONGO IMG ME DEJA CAMBIARLAS, SI PONGO NOMBREIMG NO.
+                        $this->model->updateProp($_POST['input_id'],$_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_value'],$_POST['input_description'],$_POST['input_date'],$_POST['img']);
                     }
-                    else{
-                   // si tiene images, dejarla como esta
+                     else{  
+                   // si esta el input para cambiar.
                         if (isset($_FILES['img'])){
-                            $uploads=getcwd() . '/uploads';  
+                            $uploads=getcwd() . './uploads/';  
                             $destino=tempnam($uploads,$_FILES['img']['name']) ;  
                             move_uploaded_file($_FILES['img']['tmp_name'], $destino); 
                             $destino=basename($destino);
-                             echo $destino;
-                             $this->model->updateProp($_POST['input_id'],$_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_value'],$_POST['input_description'],$_POST['input_date'],$destino);
-                        } else{
-                        /*  echo $destino;
-                            die(); */
+                            $this->model->updateProp($_POST['input_id'],$_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_value'],$_POST['input_description'],$_POST['input_date'],$destino);
+                        }  else{
                             $this->model->updateProp($_POST['input_id'],$_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_value'],$_POST['input_description'],$_POST['input_date'],null);
-                        }
-                    }
+                        } 
+                     } 
                         $this->view->ShowListLocation();
-            }           
+                    }           
       
-           /*  $this->view->showError($log,$user,$registrado," PEPEPEPEPEPEPEP"); */
-      
-            } 
+            
+        } 
+        $this->view->showError($log,$user,$registrado,"Faltan datos necesarios."); 
             
         }
 

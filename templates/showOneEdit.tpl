@@ -69,10 +69,10 @@
                         <p></p>
                         <label class="form-check-label bg-dark text-light border border-primary ml-4 p-2 " for="input_imagen"> Borrar Imagen</label>     
                         <input type="checkbox"  name="borrarImg" >
-                        <input type="file" class="mt-4  bg-dark text-light p-1 border border-primary" id="input_imagen" name="img" value="{$propiedad[0]->imagen}"> 
+                        <input type="file" class="mt-4  bg-dark text-light p-1 border border-primary" id="input_imagen" name="img" value="{$imagen}"> 
 
                         {else}    
-                        <input type="file" class="mt-4  bg-dark text-light p-1 border border-primary" id="input_imagen" name="img" value="{$propiedad[0]->imagen}"> 
+                        <input type="file" class="mt-4  bg-dark text-light p-1 border border-primary" id="input_imagen" name="img" value="{$imagen}"> 
                     {/if}
                     </div>      
                 </div>
