@@ -69,7 +69,7 @@
                         <input type="checkbox"  name="borrarImg" >
                         {else}    
                             
-                            <input type="file" class="form-control" id="input_imagen" name="img" value="{$imagen}">
+                            <input type="file" class="form-control" id="input_imagen" name="img">
                         {/if}
                     </div>      
                 </div>

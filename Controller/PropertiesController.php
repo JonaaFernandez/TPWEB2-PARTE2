@@ -114,7 +114,7 @@ class PropertiesController{
                 $destino=tempnam($uploads,$_FILES['img']['name']) ;  
                 move_uploaded_file($_FILES['img']['tmp_name'], $destino); 
                 $destino=basename($destino);
-               echo $destino;
+  
             }
         if ((isset($_POST['input_name'])) && (isset($_POST['input_value'])) && ($_POST['input_name']!= "")  && ($_POST['input_value'] !="" )) {
              $typeProp = $this->typeModel->GetAll();
@@ -163,15 +163,19 @@ class PropertiesController{
                     $ruta = './uploads/' . $imagen;
                     $imagen=null; 
                     unlink($ruta);   
-                    $this->model->updateProp($_POST['input_id'],$_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_value'],$_POST['input_description'],$_POST['input_date'],$imagen);
+                    $this->model->updateProp($_POST['input_id'],$_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_value'],$_POST['input_description'],$_POST['input_date'],null);
                 } else {
                     if (isset($_POST['nombreImg'])){
-                        $this->model->updateProp($_POST['input_id'],$_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_value'],$_POST['input_description'],$_POST['input_date'],$_POST['nombreImg']);
+                        $imagen =($_POST['nombreImg']);
+                       
+
+                        $this->model->updateProp($_POST['input_id'],$_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_value'],$_POST['input_description'],$_POST['input_date'],$imagen);
                     }
                     else{
-                   // si tiene images, dejarla como esta
+                /* 
                         if (isset($_FILES['img'])){
                             echo "holaaaaaa" ;
+                            die();
                             $uploads=getcwd() . '/uploads';  
                             $destino=tempnam($uploads,$_FILES['img']['name']) ;  
                             move_uploaded_file($_FILES['img']['tmp_name'], $destino); 
@@ -180,20 +184,22 @@ class PropertiesController{
                              $this->model->updateProp($_POST['input_id'],$_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_value'],$_POST['input_description'],$_POST['input_date'],$destino);
                         } else{
                         /*  echo $destino;
-                            die(); */
+                            die(); 
                             $this->model->updateProp($_POST['input_id'],$_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_value'],$_POST['input_description'],$_POST['input_date'],null);
-                        }
+                        } */
+                        echo "chotoooo";
+                         die();
                     }
-                $this->view->ShowListLocation();
+               
             }
-        
+            $this->view->ShowListLocation();
         }
-    
-        
-
-            $this->view->showError($log,$user,$registrado,"Los datos ingresados son incorrectos");
-             }
+            else {
+          $this->view->showError($log,$user,$registrado,"Los datos ingresados son incorrectos");
+        }
     }
+    }
+
     
     
 
