@@ -163,6 +163,7 @@ class PropertiesController{
                     $ruta = './uploads/' . $imagen;
                     $imagen=null; 
                     unlink($ruta);   
+<<<<<<< HEAD
                     $this->model->updateProp($_POST['input_id'],$_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_value'],$_POST['input_description'],$_POST['input_date'],null);
                 } else {
                     if (isset($_POST['nombreImg'])){
@@ -170,12 +171,23 @@ class PropertiesController{
                        
 
                         $this->model->updateProp($_POST['input_id'],$_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_value'],$_POST['input_description'],$_POST['input_date'],$imagen);
+=======
+                    $this->model->updateProp($_POST['input_id'],$_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_value'],$_POST['input_description'],$_POST['input_date'],$imagen);
+                echo "SE BORRO BIEN LA CONCHA DE SU MADRE";
+                 $this->view->ShowListLocation(); 
+                } else {
+                    if (isset($_POST['img'])){
+                        $this->model->updateProp($_POST['input_id'],$_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_value'],$_POST['input_description'],$_POST['input_date'],$_POST['nombreImg']);
+>>>>>>> 139ca6cacc8f0720c560ff0c79e575d76616a292
                     }
                     else{
                 /* 
                         if (isset($_FILES['img'])){
+<<<<<<< HEAD
                             echo "holaaaaaa" ;
                             die();
+=======
+>>>>>>> 139ca6cacc8f0720c560ff0c79e575d76616a292
                             $uploads=getcwd() . '/uploads';  
                             $destino=tempnam($uploads,$_FILES['img']['name']) ;  
                             move_uploaded_file($_FILES['img']['tmp_name'], $destino); 
@@ -190,6 +202,7 @@ class PropertiesController{
                         echo "chotoooo";
                          die();
                     }
+<<<<<<< HEAD
                
             }
             $this->view->ShowListLocation();
@@ -197,6 +210,18 @@ class PropertiesController{
             else {
           $this->view->showError($log,$user,$registrado,"Los datos ingresados son incorrectos");
         }
+=======
+                        $this->view->ShowListLocation();
+            }           
+      
+           /*  $this->view->showError($log,$user,$registrado," PEPEPEPEPEPEPEP"); */
+      
+            } 
+            
+        }
+
+            
+>>>>>>> 139ca6cacc8f0720c560ff0c79e575d76616a292
     }
     }
 
