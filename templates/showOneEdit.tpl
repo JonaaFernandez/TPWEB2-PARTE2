@@ -61,25 +61,25 @@
                 <div class="body-bgc col-lg-12 d-flex justify-content-around min height=130px">
                    <p></p>
                 <div class="form-group">
+              
                         {$imagen=$propiedad[0]->imagen} 
                         
-                        <input type="hidden"  name="nombreImg" value="{$imagen}">
-                        {if $imagen}
-                        <img class="mt-2 " width="180px" height="180px" src="uploads/{$imagen}" name="Imagen">
+                        <input type="hidden"  name="nombreImg"  value="{$imagen}">
+                       {if $imagen} 
+                    
+                            <img width="300px" height="300px" src="uploads/{$imagen}">
                         <p></p>
                         <label class="form-check-label bg-dark text-light border border-primary ml-4 p-2 " for="input_imagen"> Borrar Imagen</label>     
-                        <input type="checkbox"  name="borrarImg" >
-                        <input type="file" class="mt-4  bg-dark text-light p-1 border border-primary" id="input_imagen" name="img" value="{$propiedad[0]->imagen}"> 
+                        <input type="checkbox"  name="borrarImagen" >
+                        {* <input type="file" class="mt-4  bg-dark text-light p-1 border border-primary" id="input_imagen" name="img">  *}
 
-                        {else}    
-<<<<<<< HEAD
-                            
-                            <input type="file" class="form-control" id="input_imagen" name="img">
-                        {/if}
-=======
-                        <input type="file" class="mt-4  bg-dark text-light p-1 border border-primary" id="input_imagen" name="img" value="{$propiedad[0]->imagen}"> 
-                    {/if}
->>>>>>> 139ca6cacc8f0720c560ff0c79e575d76616a292
+                     {else}  
+                     <div class="form-group">   
+                     <p class="mt-5"> Imagen no disponible </p>
+                        <h3>Insertar Imagen</h3>  
+                        <input type="file" class="mt-4  bg-dark text-light p-1 border border-primary" id="input_imagen" name="img" >  
+                    </div>
+                    {/if} 
                     </div>      
                 </div>
                   

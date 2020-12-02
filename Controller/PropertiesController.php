@@ -4,8 +4,7 @@ require_once "./View/PropertiesView.php";
 require_once "./Model/PropertiesModel.php";
 require_once "./Model/propertiesTypesModel.php"; 
 
-// esto es una prueba para el git
-// esto es otra prueba mas!!
+
 class PropertiesController{
 
     private $cont;
@@ -13,8 +12,6 @@ class PropertiesController{
     private $model;
     private $admin = 0;
     
-    /* private $typeModel; */
-   
 
     function __construct(){
         $this->view = new PropertiesView();
@@ -47,12 +44,6 @@ class PropertiesController{
      $this->view->ShowContacto($log,$user,$registrado);
     }
 
-   /*  function showAllProp(){   Muestra "ventas, dependiendo si estoy como admin o usuario" 
-     $prop = $this->model->GetAllProp();
-     $typeProp = $this->typeModel->GetAll();
-     $log = $this->cont->checklogueado();
-     $this->view->ShowAll($prop,$typeProp,$log);
-    }  */
     
     function showAllProp($params = null){ 
         $nroPag = $params[':ID'];
@@ -125,15 +116,7 @@ class PropertiesController{
         }
     }
     }
-/* 
-    function borrarImagen($imagen){
-       /*  $imagen = $params[':ID']; 
-        $ruta = './uploads/' . $imagen;
-        echo $ruta;
-        unlink($ruta);
-       return;
-    
-    } */
+
       
     function formEditProp(){
         $log = $this->cont->checklogueado();
@@ -156,53 +139,34 @@ class PropertiesController{
           die();
         }
         else{
-          /*   $id = ($_POST['input_id']); */
-            if ((isset($_POST['input_name'])) && (isset($_POST['input_value'])) && ($_POST['input_name']!= "")  && ($_POST['input_value'] !="" ))   {
-                if (isset($_POST['borrarImg'])){
+                if ((isset($_POST['input_name'])) && (isset($_POST['input_value'])) && ($_POST['input_name']!= "")  && ($_POST['input_value'] !="" ))   {
+                if (isset($_POST['borrarImagen'])){ // esta seteado borrar imagen - la borramos
                     $imagen =($_POST['nombreImg']);
                     $ruta = './uploads/' . $imagen;
-                    $imagen=null; 
+                    $imagen = null; 
                     unlink($ruta);   
-<<<<<<< HEAD
-                    $this->model->updateProp($_POST['input_id'],$_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_value'],$_POST['input_description'],$_POST['input_date'],null);
-                } else {
-                    if (isset($_POST['nombreImg'])){
-                        $imagen =($_POST['nombreImg']);
-                       
-
-                        $this->model->updateProp($_POST['input_id'],$_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_value'],$_POST['input_description'],$_POST['input_date'],$imagen);
-=======
                     $this->model->updateProp($_POST['input_id'],$_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_value'],$_POST['input_description'],$_POST['input_date'],$imagen);
-                echo "SE BORRO BIEN LA CONCHA DE SU MADRE";
-                 $this->view->ShowListLocation(); 
+                 
                 } else {
-                    if (isset($_POST['img'])){
-                        $this->model->updateProp($_POST['input_id'],$_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_value'],$_POST['input_description'],$_POST['input_date'],$_POST['nombreImg']);
->>>>>>> 139ca6cacc8f0720c560ff0c79e575d76616a292
+                    if (isset($_POST['nombreImg']) && ($_POST['nombreImg'])){  // mantenemos la imagen
+                        $imagen =($_POST['nombreImg']);
+                        $this->model->updateProp($_POST['input_id'],$_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_value'],$_POST['input_description'],$_POST['input_date'],$imagen);
+                   
+                        $this->view->ShowListLocation();
                     }
+                    
                     else{
-                /* 
                         if (isset($_FILES['img'])){
-<<<<<<< HEAD
-                            echo "holaaaaaa" ;
-                            die();
-=======
->>>>>>> 139ca6cacc8f0720c560ff0c79e575d76616a292
-                            $uploads=getcwd() . '/uploads';  
-                            $destino=tempnam($uploads,$_FILES['img']['name']) ;  
-                            move_uploaded_file($_FILES['img']['tmp_name'], $destino); 
-                            $destino=basename($destino);
-                             echo $destino;
-                             $this->model->updateProp($_POST['input_id'],$_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_value'],$_POST['input_description'],$_POST['input_date'],$destino);
-                        } else{
-                        /*  echo $destino;
-                            die(); 
-                            $this->model->updateProp($_POST['input_id'],$_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_value'],$_POST['input_description'],$_POST['input_date'],null);
-                        } */
-                        echo "chotoooo";
-                         die();
+                           
+                        $uploads=getcwd() . '/uploads';  /// carpeta donde guardo las imagenes 
+                        $destino=tempnam($uploads,$_FILES['img']['name']) ;  
+                        move_uploaded_file($_FILES['img']['tmp_name'], $destino); 
+                        $destino=basename($destino); 
+                        $this->model->updateProp($_POST['input_id'],$_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_value'],$_POST['input_description'],$_POST['input_date'],$destino);
                     }
-<<<<<<< HEAD
+        
+                  
+                }
                
             }
             $this->view->ShowListLocation();
@@ -210,23 +174,8 @@ class PropertiesController{
             else {
           $this->view->showError($log,$user,$registrado,"Los datos ingresados son incorrectos");
         }
-=======
-                        $this->view->ShowListLocation();
-            }           
-      
-           /*  $this->view->showError($log,$user,$registrado," PEPEPEPEPEPEPEP"); */
-      
-            } 
-            
-        }
-
-            
->>>>>>> 139ca6cacc8f0720c560ff0c79e575d76616a292
+    } 
     }
-    }
-
-    
-    
 
     function viewOne($params = null){
         $prop_id = $params[':ID'];
@@ -270,12 +219,6 @@ class PropertiesController{
         $this->view->ShowTypesProp($prop,$typeProp,$log,$id,$filaInicial,$nroItems,$PropPorPagina,$user,$registrado); 
     } 
 
-   /*  function  showByType2(){
-        $id = ($_POST['input_type']);
-        $prop = $this->model->GetByType($id);
-        $typeProp = $this->typeModel->GetAll();
-        $this->view->ShowAll($prop,$typeProp,$this->admin); 
-    } */
   
   
     function delProp($params = null){
@@ -305,10 +248,9 @@ class PropertiesController{
         $data =  $this->model->getProp($coment);
         $this->view->ComentariosPropiedades($log,$data,$user,$registrado);
    }
-/* no funciona */
+
    
 function busquedaAvanzadaInic(){
-    /* DUDAS */
     $log = $this->cont->checklogueado();
     $user = $this->cont->admin();
     $registrado = $this->cont->registrado();
@@ -337,17 +279,13 @@ function busquedaAvanzada($params=null){
     if($params){    
         $patron = $params[':PATRON'];
         $nroPag = $params[':PAG'];
-       
-        /*   if ((isset($_POST['input_search'])) && ($_POST['input_search']!= "")) {
-            $patron = ($_POST['input_search']);
-            $nroPag = $params[':ID']; */
-            $PropPorPagina = 3; // cantidad de propiedades por pagina.
-            $filaInicial= (($nroPag-1) * $PropPorPagina);
-            $prop = $this->model->pageSearch($patron,$filaInicial,$PropPorPagina);
-            $nroItems = $this->model->ContarItemsSearch($patron);
-            $typeProp = $this->typeModel->GetAll();
-            $this->view->ShowSearchAv($prop,$typeProp,$log,$nroPag,$nroItems,$PropPorPagina,$patron,$user,$registrado); 
-            /* DUDAS SI VA ACA TAMBIEN */
+        $PropPorPagina = 3; // cantidad de propiedades por pagina.
+        $filaInicial= (($nroPag-1) * $PropPorPagina);
+        $prop = $this->model->pageSearch($patron,$filaInicial,$PropPorPagina);
+        $nroItems = $this->model->ContarItemsSearch($patron);
+        $typeProp = $this->typeModel->GetAll();
+        $this->view->ShowSearchAv($prop,$typeProp,$log,$nroPag,$nroItems,$PropPorPagina,$patron,$user,$registrado); 
+          
         }
         else {
             $this->view->showError($log,$user,$registrado,"Los datos ingresados son incorrectos");
