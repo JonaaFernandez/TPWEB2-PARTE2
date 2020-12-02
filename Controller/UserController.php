@@ -17,22 +17,6 @@ class UserController{
 
     }
 
-    
-    /* function checklogueado(){ // CHEQUEA EL ESTADO DE LA SESION Y SU ULTIMA ACIVIDAD
-
-        if (!isset($_SESSION['USERNAME'])){
-            
-        header("Location: " . LOGIN);
-        die();
-        }else{
-            if ( isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 300)) { 
-        
-                $this->LogOut();
-
-            }
-            $_SESSION['LAST_ACTIVITY'] = time();
-        } 
-    }   */
     public function checklogueado(){ // CHEQUEA EL ESTADO DE LA SESION Y SU ULTIMA ACIVIDAD
 
         if (!isset($_SESSION['USERNAME'])){
