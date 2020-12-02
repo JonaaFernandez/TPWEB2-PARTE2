@@ -18,12 +18,12 @@
     </div>
     <div class="form-group">
         <label for="title">Nombre</label>
-        <label for="title" class="form-control w-25" id="nombre" name="input_name" aria-describedby="input_name"> {$propiedad[0]->nombre}</label>
+        <label for="title" class="form-control w-50" id="nombre" name="input_name" aria-describedby="input_name"> {$propiedad[0]->nombre}</label>
     </div>
     <div class="form-group">
         <label for="title"> Direccion </label>
 
-        <label for="title" class="form-control w-25" id="adress" name="input_adress" aria-describedby="input_adress" value="{$propiedad[0]->direccion}">{$propiedad[0]->direccion}</label>
+        <label for="title" class="form-control w-50" id="adress" name="input_adress" aria-describedby="input_adress" value="{$propiedad[0]->direccion}">{$propiedad[0]->direccion}</label>
 
     </div>
     <div class="form-group">

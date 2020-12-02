@@ -1,8 +1,7 @@
 <?php
 require_once 'RouterClass.php';
 require_once 'api/ApiCommentController.php';
-/* 
-echo "ESTA ANDANDO EL API ROUTER!!!!!!!!!!!";    */
+
 
 // INSTANCIAMOS EL ROUTER.
 
@@ -15,7 +14,7 @@ $router = new  Router();
 
 $router->addRoute("comentarios/:ID" , "GET" , "ApiCommentController" , "ShowAllByProp"); // ANDANDO
 
-$router->addRoute("traerporid/:ID" , "GET" , "ApiCommentController" , "MostrarPorId"); // SIN USO POR AHORA
+$router->addRoute("traerporid/:ID" , "GET" , "ApiCommentController" , "MostrarPorId"); // SIN USO 
 
 $router->addRoute("borrar/:ID" , "DELETE" , "ApiCommentController" , "DelComment"); // ANDANDO
 

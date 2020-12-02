@@ -9,9 +9,8 @@ class ApiCommentController extends ApiController{
 
     function __construct(){
         parent:: __construct(); 
-        $this->model = new CommentModel();   //  Cual model usamos aca? 
+        $this->model = new CommentModel();   
         $this->view = new ApiView(); 
-    /*     $this->Typesmodel = new PropertiesTypesModel(); */
     }
 
 

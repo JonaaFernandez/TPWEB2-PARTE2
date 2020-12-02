@@ -36,21 +36,21 @@
                 <div class="form-group">
                     <input type="hidden" name="input_id" value="{$propiedad[0]->id}">
                     <label for="title">Nombre</label>
-                    <input class="form-control" id="nombre" name="input_name" aria-describedby="input_name" value=" {$propiedad[0]->nombre}  ">
+                    <input class="form-control text-left" id="nombre" name="input_name" aria-describedby="input_name" value=" {$propiedad[0]->nombre}  ">
                 </div>
                 <div class="form-group">
                     <label for="title"> Direccion </label>
 
-                    <input class="form-control" id="adress" name="input_adress" aria-describedby="input_adress" value=" {$propiedad[0]->direccion}">
+                    <input class="form-control text-left" id="adress" name="input_adress" aria-describedby="input_adress" value=" {$propiedad[0]->direccion}">
 
                 </div>
                 <div class="form-group">
                     <label for="description">Descripcion</label>
-                    <input class="form-control" id="description" name="input_description" value="{$propiedad[0]->descripcion}">
+                    <input class="form-control text-left" id="description" name="input_description" value="{$propiedad[0]->descripcion}">
                 </div>
                 <div class="form-group">
                     <label for="valor">Valor</label>
-                    <input type="number" class="form-control" id="value" name="input_value" value="{$propiedad[0]->valor}">
+                    <input type="number text-left" class="form-control" id="value" name="input_value" value="{$propiedad[0]->valor}">
                 </div>
                 <div class="form-group">
                     <label for="Fecha de Ingreso">Fecha de Ingreso</label>
@@ -74,8 +74,7 @@
                         {* <input type="file" class="mt-4  bg-dark text-light p-1 border border-primary" id="input_imagen" name="img">  *}
 
                      {else}  
-                     <div class="form-group">   
-                     <p class="mt-5"> Imagen no disponible </p>
+                     <div class="form-group mt-4">   
                         <h3>Insertar Imagen</h3>  
                         <input type="file" class="mt-4  bg-dark text-light p-1 border border-primary" id="input_imagen" name="img" >  
                     </div>

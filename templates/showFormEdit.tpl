@@ -10,11 +10,11 @@
         </div>
         <div class="form-group">
             <label for="title">Nombre</label>
-            <input type="text" class="form-control w-25 ml-5" name="input_name" value="{$tipo[0]->nombre}">
+            <input type="text" class="form-control w-25 ml-5 text-left" name="input_name" value="{$tipo[0]->nombre}">
         </div>
         <div class="form-group">
             <label for="title">Descripcion</label>
-            <input type="text" class="form-control w-75 ml-4" name="input_description" value="{$tipo[0]->descripcion}">
+            <input type="text" class="form-control w-75 ml-4 text-left" name="input_description" value="{$tipo[0]->descripcion}">
         </div>
         <button type="submit" class="btn btn-primary bg-dark">Ingresar</button>
 

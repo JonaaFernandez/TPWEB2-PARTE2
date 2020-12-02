@@ -104,9 +104,7 @@
         <li class="page-item">
             <a class="page-link" {if $pagina == (($items/$propPorPagina) +1)|string_format:"%d"} href='mostrarBusqueda/{$patron}/{$pagina}' {else} href= 'mostrarBusqueda/{$patron}/{$pagina+1}' {/if}>Siguiente</a>
         </li>
-        {* {$tipoprop->tipo}  *}
     </ul>
-    {$pagina}  Y  {$i}
 </nav>
 </div>
 {include file="footer.tpl"}
