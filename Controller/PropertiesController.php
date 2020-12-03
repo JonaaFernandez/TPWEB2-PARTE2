@@ -45,7 +45,7 @@ class PropertiesController{
     }
 
     
-    function showAllProp($params = null){ 
+    function showAllProp($params = null){  //nueva pagina ventas, ahora modificar/1 conpaginacion
         $nroPag = $params[':ID'];
         $PropPorPagina = 3; // cantidad de propiedades por pagina.
         $filaInicial= (($nroPag-1) * $PropPorPagina);
