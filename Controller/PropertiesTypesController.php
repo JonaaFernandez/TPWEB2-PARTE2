@@ -77,7 +77,6 @@ class PropertiesTypesController{
 
 
     function delete($params = null){
-        /* DUDAS SI EN SHOW LIST LOCATION TAMBIEN VAN LOS PARAMETROS */
         $log = $this->cont->checklogueado();
         $user = $this->cont->admin();
         $registrado = $this->cont->registrado();
