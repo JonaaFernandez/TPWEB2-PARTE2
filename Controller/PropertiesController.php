@@ -1,5 +1,4 @@
 <?php
-/* a */
 require_once "UserController.php";
 require_once "./View/PropertiesView.php";
 require_once "./Model/PropertiesModel.php";
